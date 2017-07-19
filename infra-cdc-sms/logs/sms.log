@@ -1,0 +1,39 @@
+10:25:07.492 [main] ERROR com.stu.infra.cdc.sms.Main - SMSServer Error:  
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.stu.infra.cdc.config.SmsAppConfig]; nested exception is java.io.FileNotFoundException: class path resource [sms-gw.properties] cannot be opened because it does not exist
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:182) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:243) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:273) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:98) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:678) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:520) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.annotation.AnnotationConfigApplicationContext.<init>(AnnotationConfigApplicationContext.java:84) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at com.stu.infra.cdc.sms.SpringManager.<init>(SpringManager.java:14) ~[classes/:na]
+	at com.stu.infra.cdc.sms.SpringManager.getInstance(SpringManager.java:35) ~[classes/:na]
+	at com.stu.infra.cdc.sms.Main.run(Main.java:338) ~[classes/:na]
+	at com.stu.infra.cdc.sms.Main.main(Main.java:401) ~[classes/:na]
+Caused by: java.io.FileNotFoundException: class path resource [sms-gw.properties] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:172) ~[spring-core-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.core.io.support.EncodedResource.getInputStream(EncodedResource.java:153) ~[spring-core-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.core.io.support.PropertiesLoaderUtils.fillProperties(PropertiesLoaderUtils.java:98) ~[spring-core-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.core.io.support.PropertiesLoaderUtils.fillProperties(PropertiesLoaderUtils.java:72) ~[spring-core-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.core.io.support.PropertiesLoaderUtils.loadProperties(PropertiesLoaderUtils.java:58) ~[spring-core-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.core.io.support.ResourcePropertySource.<init>(ResourcePropertySource.java:84) ~[spring-core-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassParser.processPropertySource(ConfigurationClassParser.java:361) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:255) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:232) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:199) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:168) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	... 11 common frames omitted
+10:25:07.522 [main] ERROR com.stu.infra.cdc.sms.Main - SMSServer error while shutting down:  
+java.lang.NullPointerException: null
+	at org.smslib.notify.NotifyQueueManager.cancel(NotifyQueueManager.java:66) ~[smslib-3.5.4.jar:3.5.4]
+	at org.smslib.Service.stopService(Service.java:356) ~[smslib-3.5.4.jar:3.5.4]
+	at com.stu.infra.cdc.sms.Main.main(Main.java:408) ~[classes/:na]
+10:25:07.523 [Thread-0] INFO  com.stu.infra.cdc.sms.Main$Shutdown - Shutting down SMS Server.. 
+10:25:07.524 [Thread-0] ERROR com.stu.infra.cdc.sms.Main$Shutdown - Shutdown hook error. 
+java.lang.NullPointerException: null
+	at org.smslib.notify.NotifyQueueManager.cancel(NotifyQueueManager.java:66) ~[smslib-3.5.4.jar:3.5.4]
+	at org.smslib.Service.stopService(Service.java:356) ~[smslib-3.5.4.jar:3.5.4]
+	at com.stu.infra.cdc.sms.Main$Shutdown.run(Main.java:68) ~[classes/:na]
+10:25:07.524 [Thread-0] INFO  com.stu.infra.cdc.sms.Main$Shutdown - SMS Server stopped. 

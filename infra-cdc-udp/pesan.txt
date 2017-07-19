@@ -1,0 +1,33 @@
+UDP Server Menghandle :
+-----------------------
+
+1. SMS yang masuk, format pesan :
+	Pesan yang dikirim oleh sinegen, diterima oleh SMS server, lalu dikirim ke UDP server.
+	{
+		"head":"SMSINB",
+		"data": ""
+	}
+	
+	sample data :
+	{"head":"SMSINB", "data":{"id":14,"sender":"6285315718563","messageDate":"2016-10-19 13:21:15","receiveDate":"2016-10-19 13:21:22","text":"1=22-02-2017 17:27:43\n2=220.0,220.0,220.0\n3=48.0\n4=12.0\n5=60\n6=180\n7=125\n8=200\n9=0\n10=0\n11=0\n12=0\n13=0\n14=0\n15=0\n16=0\n17=0\n18=0\n19=0","requestId":"123","gatewayId":"Modem1","messageType":"R","encoding":"7"}}
+	
+2. GET Outbox, format pesan :
+	Pesan yang dikirim oleh SMS Server untuk mengambil daftar pesan SMS yang harus dikirim ke sinegen.
+	{
+		"head":"GETOUT",
+		"data":""
+	}
+	sample data :
+	{"head":"GETOUT", "data":""}
+	
+3. SET Outbox, format pesan :
+	Pesan yang dikirim oleh SMS Server untuk melakukan update status proses pengiriman ke sinegen.
+	{
+		"head":"SETOUT",
+		"data": ""
+	}
+	
+	Sample data :
+	{"head":"SETOUT", "data":{"id":1,"recipient":"085315718563","text":"#SET#0000#GENSET#OFF#","createDate":"2017-04-19 14:05:32","sentDate":"2017-04-19 14:15:00","replyDate":null,"replyText":null,"requestId":null,"status":"S","gatewayId":null,"messageType":"S"}}
+	
+4. Melakukan trigger alarm genset on fail dan genset off fail secara berkala/periodik.

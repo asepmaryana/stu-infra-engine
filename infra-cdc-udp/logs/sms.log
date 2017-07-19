@@ -1,0 +1,56 @@
+15:40:43.403 [main] ERROR com.stu.infra.cdc.udp.Main$Shutdown - SMS UDP Server error. 
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.stu.infra.cdc.config.SmsUdpConfig]; nested exception is java.io.FileNotFoundException: class path resource [server.properties] cannot be opened because it does not exist
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:182) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:243) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:273) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:98) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:678) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:520) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.annotation.AnnotationConfigApplicationContext.<init>(AnnotationConfigApplicationContext.java:84) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at com.stu.infra.cdc.udp.SpringManager.<init>(SpringManager.java:14) ~[classes/:na]
+	at com.stu.infra.cdc.udp.SpringManager.getInstance(SpringManager.java:35) ~[classes/:na]
+	at com.stu.infra.cdc.udp.Main.run(Main.java:44) ~[classes/:na]
+	at com.stu.infra.cdc.udp.Main.main(Main.java:83) ~[classes/:na]
+Caused by: java.io.FileNotFoundException: class path resource [server.properties] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:172) ~[spring-core-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.core.io.support.EncodedResource.getInputStream(EncodedResource.java:153) ~[spring-core-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.core.io.support.PropertiesLoaderUtils.fillProperties(PropertiesLoaderUtils.java:98) ~[spring-core-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.core.io.support.PropertiesLoaderUtils.fillProperties(PropertiesLoaderUtils.java:72) ~[spring-core-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.core.io.support.PropertiesLoaderUtils.loadProperties(PropertiesLoaderUtils.java:58) ~[spring-core-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.core.io.support.ResourcePropertySource.<init>(ResourcePropertySource.java:84) ~[spring-core-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassParser.processPropertySource(ConfigurationClassParser.java:361) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:255) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:232) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:199) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:168) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	... 11 common frames omitted
+15:40:43.494 [Thread-0] INFO  com.stu.infra.cdc.udp.Main$Shutdown - Shutting down UDP Server.. 
+15:45:18.080 [main] ERROR com.stu.infra.cdc.udp.Main$Shutdown - SMS UDP Server error. 
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.stu.infra.cdc.config.SmsUdpConfig]; nested exception is java.io.FileNotFoundException: class path resource [server.properties] cannot be opened because it does not exist
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:182) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:243) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:273) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:98) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:678) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:520) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.annotation.AnnotationConfigApplicationContext.<init>(AnnotationConfigApplicationContext.java:84) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at com.stu.infra.cdc.udp.SpringManager.<init>(SpringManager.java:14) ~[classes/:na]
+	at com.stu.infra.cdc.udp.SpringManager.getInstance(SpringManager.java:35) ~[classes/:na]
+	at com.stu.infra.cdc.udp.Main.run(Main.java:44) ~[classes/:na]
+	at com.stu.infra.cdc.udp.Main.main(Main.java:83) ~[classes/:na]
+Caused by: java.io.FileNotFoundException: class path resource [server.properties] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:172) ~[spring-core-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.core.io.support.EncodedResource.getInputStream(EncodedResource.java:153) ~[spring-core-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.core.io.support.PropertiesLoaderUtils.fillProperties(PropertiesLoaderUtils.java:98) ~[spring-core-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.core.io.support.PropertiesLoaderUtils.fillProperties(PropertiesLoaderUtils.java:72) ~[spring-core-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.core.io.support.PropertiesLoaderUtils.loadProperties(PropertiesLoaderUtils.java:58) ~[spring-core-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.core.io.support.ResourcePropertySource.<init>(ResourcePropertySource.java:84) ~[spring-core-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassParser.processPropertySource(ConfigurationClassParser.java:361) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:255) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:232) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:199) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:168) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	... 11 common frames omitted
+15:45:18.083 [Thread-0] INFO  com.stu.infra.cdc.udp.Main$Shutdown - Shutting down UDP Server.. 

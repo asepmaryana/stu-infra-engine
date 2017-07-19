@@ -1,0 +1,6 @@
+**/lib
+**/target
+
+.settings/
+*.jar
+*.db

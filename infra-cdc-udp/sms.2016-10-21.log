@@ -1,0 +1,614 @@
+11:12:51.997 [main] ERROR com.stu.infra.cdc.udp.Main$Shutdown - SMS UDP Server error. 
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'inboxDao': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.hibernate.SessionFactory com.stu.infra.cdc.dao.AbstractDao.sessionFactory; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [com/stu/infra/cdc/config/HibernateConfig.class]: Invocation of init method failed; nested exception is org.hibernate.HibernateException: Wrong column type in public.inbox for column id. Found: bigserial, expected: int4
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:334) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1214) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:543) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:772) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:839) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:538) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.annotation.AnnotationConfigApplicationContext.<init>(AnnotationConfigApplicationContext.java:84) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at com.stu.infra.cdc.udp.Main.run(Main.java:39) ~[classes/:na]
+	at com.stu.infra.cdc.udp.Main.main(Main.java:72) ~[classes/:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.hibernate.SessionFactory com.stu.infra.cdc.dao.AbstractDao.sessionFactory; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [com/stu/infra/cdc/config/HibernateConfig.class]: Invocation of init method failed; nested exception is org.hibernate.HibernateException: Wrong column type in public.inbox for column id. Found: bigserial, expected: int4
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:573) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:331) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	... 13 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [com/stu/infra/cdc/config/HibernateConfig.class]: Invocation of init method failed; nested exception is org.hibernate.HibernateException: Wrong column type in public.inbox for column id. Found: bigserial, expected: int4
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1578) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:545) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1192) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1116) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1014) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:545) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	... 15 common frames omitted
+Caused by: org.hibernate.HibernateException: Wrong column type in public.inbox for column id. Found: bigserial, expected: int4
+	at org.hibernate.mapping.Table.validateColumns(Table.java:373) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.cfg.Configuration.validateSchema(Configuration.java:1338) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.tool.hbm2ddl.SchemaValidator.validate(SchemaValidator.java:175) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:525) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1859) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1930) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBuilder.buildSessionFactory(LocalSessionFactoryBuilder.java:372) ~[spring-orm-4.2.8.RELEASE.jar:4.2.8.RELEASE]
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBean.buildSessionFactory(LocalSessionFactoryBean.java:454) ~[spring-orm-4.2.8.RELEASE.jar:4.2.8.RELEASE]
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBean.afterPropertiesSet(LocalSessionFactoryBean.java:439) ~[spring-orm-4.2.8.RELEASE.jar:4.2.8.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1637) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1574) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	... 25 common frames omitted
+11:12:52.004 [Thread-0] INFO  com.stu.infra.cdc.udp.Main$Shutdown - Shutting down UDP Server.. 
+11:12:52.012 [Thread-0] INFO  com.stu.infra.cdc.udp.Main$Shutdown - UDP Server stopped. 
+11:15:00.423 [main] ERROR com.stu.infra.cdc.udp.Main$Shutdown - SMS UDP Server error. 
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'inboxDao': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.hibernate.SessionFactory com.stu.infra.cdc.dao.AbstractDao.sessionFactory; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [com/stu/infra/cdc/config/HibernateConfig.class]: Invocation of init method failed; nested exception is org.hibernate.HibernateException: Missing column: baud_rate in public.modem
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:334) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1214) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:543) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:772) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:839) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:538) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.annotation.AnnotationConfigApplicationContext.<init>(AnnotationConfigApplicationContext.java:84) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at com.stu.infra.cdc.udp.Main.run(Main.java:39) ~[classes/:na]
+	at com.stu.infra.cdc.udp.Main.main(Main.java:72) ~[classes/:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.hibernate.SessionFactory com.stu.infra.cdc.dao.AbstractDao.sessionFactory; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [com/stu/infra/cdc/config/HibernateConfig.class]: Invocation of init method failed; nested exception is org.hibernate.HibernateException: Missing column: baud_rate in public.modem
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:573) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:331) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	... 13 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [com/stu/infra/cdc/config/HibernateConfig.class]: Invocation of init method failed; nested exception is org.hibernate.HibernateException: Missing column: baud_rate in public.modem
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1578) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:545) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1192) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1116) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1014) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:545) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	... 15 common frames omitted
+Caused by: org.hibernate.HibernateException: Missing column: baud_rate in public.modem
+	at org.hibernate.mapping.Table.validateColumns(Table.java:366) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.cfg.Configuration.validateSchema(Configuration.java:1338) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.tool.hbm2ddl.SchemaValidator.validate(SchemaValidator.java:175) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:525) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1859) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1930) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBuilder.buildSessionFactory(LocalSessionFactoryBuilder.java:372) ~[spring-orm-4.2.8.RELEASE.jar:4.2.8.RELEASE]
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBean.buildSessionFactory(LocalSessionFactoryBean.java:454) ~[spring-orm-4.2.8.RELEASE.jar:4.2.8.RELEASE]
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBean.afterPropertiesSet(LocalSessionFactoryBean.java:439) ~[spring-orm-4.2.8.RELEASE.jar:4.2.8.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1637) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1574) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	... 25 common frames omitted
+11:15:00.439 [Thread-0] INFO  com.stu.infra.cdc.udp.Main$Shutdown - Shutting down UDP Server.. 
+11:15:00.439 [Thread-0] INFO  com.stu.infra.cdc.udp.Main$Shutdown - UDP Server stopped. 
+11:18:07.743 [main] ERROR com.stu.infra.cdc.udp.Main$Shutdown - SMS UDP Server error. 
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'inboxDao': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.hibernate.SessionFactory com.stu.infra.cdc.dao.AbstractDao.sessionFactory; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [com/stu/infra/cdc/config/HibernateConfig.class]: Invocation of init method failed; nested exception is org.hibernate.HibernateException: Wrong column type in public.node for column batt_curr. Found: numeric, expected: float8
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:334) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1214) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:543) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:772) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:839) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:538) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.annotation.AnnotationConfigApplicationContext.<init>(AnnotationConfigApplicationContext.java:84) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at com.stu.infra.cdc.udp.Main.run(Main.java:39) ~[classes/:na]
+	at com.stu.infra.cdc.udp.Main.main(Main.java:72) ~[classes/:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.hibernate.SessionFactory com.stu.infra.cdc.dao.AbstractDao.sessionFactory; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [com/stu/infra/cdc/config/HibernateConfig.class]: Invocation of init method failed; nested exception is org.hibernate.HibernateException: Wrong column type in public.node for column batt_curr. Found: numeric, expected: float8
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:573) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:331) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	... 13 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [com/stu/infra/cdc/config/HibernateConfig.class]: Invocation of init method failed; nested exception is org.hibernate.HibernateException: Wrong column type in public.node for column batt_curr. Found: numeric, expected: float8
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1578) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:545) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1192) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1116) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1014) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:545) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	... 15 common frames omitted
+Caused by: org.hibernate.HibernateException: Wrong column type in public.node for column batt_curr. Found: numeric, expected: float8
+	at org.hibernate.mapping.Table.validateColumns(Table.java:373) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.cfg.Configuration.validateSchema(Configuration.java:1338) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.tool.hbm2ddl.SchemaValidator.validate(SchemaValidator.java:175) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:525) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1859) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1930) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBuilder.buildSessionFactory(LocalSessionFactoryBuilder.java:372) ~[spring-orm-4.2.8.RELEASE.jar:4.2.8.RELEASE]
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBean.buildSessionFactory(LocalSessionFactoryBean.java:454) ~[spring-orm-4.2.8.RELEASE.jar:4.2.8.RELEASE]
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBean.afterPropertiesSet(LocalSessionFactoryBean.java:439) ~[spring-orm-4.2.8.RELEASE.jar:4.2.8.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1637) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1574) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	... 25 common frames omitted
+11:18:07.833 [Thread-0] INFO  com.stu.infra.cdc.udp.Main$Shutdown - Shutting down UDP Server.. 
+11:18:07.834 [Thread-0] INFO  com.stu.infra.cdc.udp.Main$Shutdown - UDP Server stopped. 
+11:22:43.667 [main] ERROR com.stu.infra.cdc.udp.Main$Shutdown - SMS UDP Server error. 
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'inboxDao': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.hibernate.SessionFactory com.stu.infra.cdc.dao.AbstractDao.sessionFactory; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [com/stu/infra/cdc/config/HibernateConfig.class]: Invocation of init method failed; nested exception is org.hibernate.HibernateException: Wrong column type in public.node for column batt_low. Found: int2, expected: numeric(19, 2)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:334) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1214) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:543) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:772) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:839) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:538) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.annotation.AnnotationConfigApplicationContext.<init>(AnnotationConfigApplicationContext.java:84) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at com.stu.infra.cdc.udp.Main.run(Main.java:39) ~[classes/:na]
+	at com.stu.infra.cdc.udp.Main.main(Main.java:72) ~[classes/:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.hibernate.SessionFactory com.stu.infra.cdc.dao.AbstractDao.sessionFactory; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [com/stu/infra/cdc/config/HibernateConfig.class]: Invocation of init method failed; nested exception is org.hibernate.HibernateException: Wrong column type in public.node for column batt_low. Found: int2, expected: numeric(19, 2)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:573) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:331) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	... 13 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [com/stu/infra/cdc/config/HibernateConfig.class]: Invocation of init method failed; nested exception is org.hibernate.HibernateException: Wrong column type in public.node for column batt_low. Found: int2, expected: numeric(19, 2)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1578) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:545) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1192) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1116) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1014) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:545) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	... 15 common frames omitted
+Caused by: org.hibernate.HibernateException: Wrong column type in public.node for column batt_low. Found: int2, expected: numeric(19, 2)
+	at org.hibernate.mapping.Table.validateColumns(Table.java:373) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.cfg.Configuration.validateSchema(Configuration.java:1338) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.tool.hbm2ddl.SchemaValidator.validate(SchemaValidator.java:175) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:525) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1859) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1930) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBuilder.buildSessionFactory(LocalSessionFactoryBuilder.java:372) ~[spring-orm-4.2.8.RELEASE.jar:4.2.8.RELEASE]
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBean.buildSessionFactory(LocalSessionFactoryBean.java:454) ~[spring-orm-4.2.8.RELEASE.jar:4.2.8.RELEASE]
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBean.afterPropertiesSet(LocalSessionFactoryBean.java:439) ~[spring-orm-4.2.8.RELEASE.jar:4.2.8.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1637) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1574) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	... 25 common frames omitted
+11:22:43.701 [Thread-0] INFO  com.stu.infra.cdc.udp.Main$Shutdown - Shutting down UDP Server.. 
+11:22:43.702 [Thread-0] INFO  com.stu.infra.cdc.udp.Main$Shutdown - UDP Server stopped. 
+11:24:34.170 [main] ERROR com.stu.infra.cdc.udp.Main$Shutdown - SMS UDP Server error. 
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'inboxDao': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.hibernate.SessionFactory com.stu.infra.cdc.dao.AbstractDao.sessionFactory; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [com/stu/infra/cdc/config/HibernateConfig.class]: Invocation of init method failed; nested exception is org.hibernate.HibernateException: Wrong column type in public.node for column genset_status. Found: int2, expected: numeric(19, 2)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:334) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1214) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:543) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:772) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:839) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:538) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.annotation.AnnotationConfigApplicationContext.<init>(AnnotationConfigApplicationContext.java:84) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at com.stu.infra.cdc.udp.Main.run(Main.java:39) ~[classes/:na]
+	at com.stu.infra.cdc.udp.Main.main(Main.java:72) ~[classes/:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.hibernate.SessionFactory com.stu.infra.cdc.dao.AbstractDao.sessionFactory; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [com/stu/infra/cdc/config/HibernateConfig.class]: Invocation of init method failed; nested exception is org.hibernate.HibernateException: Wrong column type in public.node for column genset_status. Found: int2, expected: numeric(19, 2)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:573) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:331) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	... 13 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [com/stu/infra/cdc/config/HibernateConfig.class]: Invocation of init method failed; nested exception is org.hibernate.HibernateException: Wrong column type in public.node for column genset_status. Found: int2, expected: numeric(19, 2)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1578) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:545) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1192) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1116) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1014) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:545) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	... 15 common frames omitted
+Caused by: org.hibernate.HibernateException: Wrong column type in public.node for column genset_status. Found: int2, expected: numeric(19, 2)
+	at org.hibernate.mapping.Table.validateColumns(Table.java:373) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.cfg.Configuration.validateSchema(Configuration.java:1338) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.tool.hbm2ddl.SchemaValidator.validate(SchemaValidator.java:175) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:525) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1859) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1930) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBuilder.buildSessionFactory(LocalSessionFactoryBuilder.java:372) ~[spring-orm-4.2.8.RELEASE.jar:4.2.8.RELEASE]
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBean.buildSessionFactory(LocalSessionFactoryBean.java:454) ~[spring-orm-4.2.8.RELEASE.jar:4.2.8.RELEASE]
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBean.afterPropertiesSet(LocalSessionFactoryBean.java:439) ~[spring-orm-4.2.8.RELEASE.jar:4.2.8.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1637) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1574) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	... 25 common frames omitted
+11:24:34.173 [Thread-0] INFO  com.stu.infra.cdc.udp.Main$Shutdown - Shutting down UDP Server.. 
+11:24:34.173 [Thread-0] INFO  com.stu.infra.cdc.udp.Main$Shutdown - UDP Server stopped. 
+11:25:52.108 [main] ERROR com.stu.infra.cdc.udp.Main$Shutdown - SMS UDP Server error. 
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'inboxDao': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.hibernate.SessionFactory com.stu.infra.cdc.dao.AbstractDao.sessionFactory; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [com/stu/infra/cdc/config/HibernateConfig.class]: Invocation of init method failed; nested exception is org.hibernate.HibernateException: Wrong column type in public.outbox for column id. Found: bigserial, expected: int4
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:334) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1214) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:543) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:772) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:839) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:538) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.context.annotation.AnnotationConfigApplicationContext.<init>(AnnotationConfigApplicationContext.java:84) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at com.stu.infra.cdc.udp.Main.run(Main.java:39) ~[classes/:na]
+	at com.stu.infra.cdc.udp.Main.main(Main.java:72) ~[classes/:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.hibernate.SessionFactory com.stu.infra.cdc.dao.AbstractDao.sessionFactory; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [com/stu/infra/cdc/config/HibernateConfig.class]: Invocation of init method failed; nested exception is org.hibernate.HibernateException: Wrong column type in public.outbox for column id. Found: bigserial, expected: int4
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:573) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:331) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	... 13 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [com/stu/infra/cdc/config/HibernateConfig.class]: Invocation of init method failed; nested exception is org.hibernate.HibernateException: Wrong column type in public.outbox for column id. Found: bigserial, expected: int4
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1578) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:545) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1192) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1116) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1014) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:545) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	... 15 common frames omitted
+Caused by: org.hibernate.HibernateException: Wrong column type in public.outbox for column id. Found: bigserial, expected: int4
+	at org.hibernate.mapping.Table.validateColumns(Table.java:373) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.cfg.Configuration.validateSchema(Configuration.java:1338) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.tool.hbm2ddl.SchemaValidator.validate(SchemaValidator.java:175) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:525) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1859) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1930) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBuilder.buildSessionFactory(LocalSessionFactoryBuilder.java:372) ~[spring-orm-4.2.8.RELEASE.jar:4.2.8.RELEASE]
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBean.buildSessionFactory(LocalSessionFactoryBean.java:454) ~[spring-orm-4.2.8.RELEASE.jar:4.2.8.RELEASE]
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBean.afterPropertiesSet(LocalSessionFactoryBean.java:439) ~[spring-orm-4.2.8.RELEASE.jar:4.2.8.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1637) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1574) ~[spring-beans-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	... 25 common frames omitted
+11:25:52.110 [Thread-0] INFO  com.stu.infra.cdc.udp.Main$Shutdown - Shutting down UDP Server.. 
+11:25:52.110 [Thread-0] INFO  com.stu.infra.cdc.udp.Main$Shutdown - UDP Server stopped. 
+11:27:16.096 [main] INFO  com.stu.infra.cdc.udp.Main - UDP Server started on port 9876 
+11:27:16.216 [Thread-6] INFO  c.s.i.cdc.udp.ThreadPooledServer - ThreadPooledServer Started. 
+11:28:39.628 [pool-1-thread-1] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Receive: {"id":14,"originator":"6287825411059","encoding":"7","messageDate":"2016-10-19 13:21:15","receiveDate":"2016-10-19 13:21:22","text":"Time=29-09-2016 20:00:00\nGv=220.25,220.02,219.50\nGi=3.32,3.30,3.23\nBv=48.55\nBi=3.40\nGbv=20.34\nGo=0\nRs=1\nBs=1\nGf=0\nLf=0\nRf=0\nBlv=0\nCdc=2","gatewayId":"Modem1"}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+From: 127.0.0.1
+Port: 4023 
+11:28:44.750 [pool-1-thread-1] ERROR c.stu.infra.cdc.udp.SmsUdpResponder - JSON to Java OK --> 6287825411059 
+13:17:07.196 [main] INFO  com.stu.infra.cdc.udp.Main - UDP Server started on port 9876 
+13:17:07.199 [Thread-7] INFO  c.s.i.cdc.udp.ThreadPooledServer - ThreadPooledServer Started. 
+13:17:16.311 [pool-1-thread-1] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Receive: {"id":14,"originator":"6287825411059","encoding":"7","messageDate":"2016-10-19 13:21:15","receiveDate":"2016-10-19 13:21:22","text":"Time=29-09-2016 20:00:00\nGv=220.25,220.02,219.50\nGi=3.32,3.30,3.23\nBv=48.55\nBi=3.40\nGbv=20.34\nGo=0\nRs=1\nBs=1\nGf=0\nLf=0\nRf=0\nBlv=0\nCdc=2","gatewayId":"Modem1"}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+From: 127.0.0.1
+Port: 4023 
+13:17:16.527 [pool-1-thread-1] ERROR c.stu.infra.cdc.udp.SmsUdpResponder - JSON to Java OK --> 6287825411059 
+13:17:16.846 [pool-1-thread-1] WARN  c.stu.infra.cdc.udp.SmsUdpResponder - Unregister phone 087825411059 
+13:18:09.863 [pool-1-thread-2] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Receive: {"id":14,"originator":"085315718563","encoding":"7","messageDate":"2016-10-19 13:21:15","receiveDate":"2016-10-19 13:21:22","text":"Time=29-09-2016 20:00:00\nGv=220.25,220.02,219.50\nGi=3.32,3.30,3.23\nBv=48.55\nBi=3.40\nGbv=20.34\nGo=0\nRs=1\nBs=1\nGf=0\nLf=0\nRf=0\nBlv=0\nCdc=2","gatewayId":"Modem1"}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+From: 127.0.0.1
+Port: 4023 
+13:18:09.869 [pool-1-thread-2] ERROR c.stu.infra.cdc.udp.SmsUdpResponder - JSON to Java OK --> 085315718563 
+13:18:09.909 [pool-1-thread-2] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Registered phone 085315718563 
+14:03:15.931 [main] INFO  com.stu.infra.cdc.udp.Main - UDP Server started on port 9876 
+14:03:15.934 [Thread-7] INFO  c.s.i.cdc.udp.ThreadPooledServer - ThreadPooledServer Started. 
+14:03:20.030 [pool-1-thread-1] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Receive: {"id":14,"originator":"085315718563","encoding":"7","messageDate":"2016-10-19 13:21:15","receiveDate":"2016-10-19 13:21:22","text":"Time=29-09-2016 20:00:00\nGv=220.25,220.02,219.50\nGi=3.32,3.30,3.23\nBv=48.55\nBi=3.40\nGbv=20.34\nGo=0\nRs=1\nBs=1\nGf=0\nLf=0\nRf=0\nBlv=0\nCdc=2","gatewayId":"Modem1"}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+From: 127.0.0.1
+Port: 4023 
+14:03:20.240 [pool-1-thread-1] ERROR c.stu.infra.cdc.udp.SmsUdpResponder - JSON to Java OK --> 085315718563 
+14:03:20.475 [pool-1-thread-1] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Registered phone 085315718563 
+14:03:20.632 [pool-1-thread-1] ERROR c.stu.infra.cdc.udp.SmsUdpResponder - Error UDP Process. 
+org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:129) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:49) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:126) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:112) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:211) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.id.IdentityGenerator$GetGeneratedKeysDelegate.executeAndExtract(IdentityGenerator.java:96) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.id.insert.AbstractReturningDelegate.performInsert(AbstractReturningDelegate.java:58) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3032) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3558) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:98) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:492) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:197) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:181) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:216) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:334) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:289) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:195) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:126) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.event.internal.DefaultSaveOrUpdateEventListener.saveWithGeneratedOrRequestedId(DefaultSaveOrUpdateEventListener.java:209) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.event.internal.DefaultSaveEventListener.saveWithGeneratedOrRequestedId(DefaultSaveEventListener.java:55) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.event.internal.DefaultSaveOrUpdateEventListener.entityIsTransient(DefaultSaveOrUpdateEventListener.java:194) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.event.internal.DefaultSaveEventListener.performSaveOrUpdate(DefaultSaveEventListener.java:49) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.event.internal.DefaultSaveOrUpdateEventListener.onSaveOrUpdate(DefaultSaveOrUpdateEventListener.java:90) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.internal.SessionImpl.fireSave(SessionImpl.java:715) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.internal.SessionImpl.save(SessionImpl.java:707) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.internal.SessionImpl.save(SessionImpl.java:702) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at com.stu.infra.cdc.dao.AbstractDao.save(AbstractDao.java:33) ~[classes/:na]
+	at com.stu.infra.cdc.service.DatalogService.saveDatalog(DatalogService.java:18) ~[classes/:na]
+	at com.stu.infra.cdc.service.DatalogService$$FastClassBySpringCGLIB$$f2954565.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204) ~[spring-core-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:720) ~[spring-aop-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157) ~[spring-aop-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99) ~[spring-tx-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281) ~[spring-tx-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96) ~[spring-tx-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179) ~[spring-aop-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:655) ~[spring-aop-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at com.stu.infra.cdc.service.DatalogService$$EnhancerBySpringCGLIB$$d91db5a5.saveDatalog(<generated>) ~[classes/:na]
+	at com.stu.infra.cdc.udp.SmsUdpResponder.run(SmsUdpResponder.java:193) ~[classes/:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.8.0_101]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.8.0_101]
+	at java.lang.Thread.run(Unknown Source) [na:1.8.0_101]
+Caused by: org.postgresql.util.PSQLException: ERROR: null value in column "dtime" violates not-null constraint
+  Detail: Failing row contains (542, 2, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2458) ~[postgresql-9.4.1211.jar:9.4.1211]
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2158) ~[postgresql-9.4.1211.jar:9.4.1211]
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:291) ~[postgresql-9.4.1211.jar:9.4.1211]
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:432) ~[postgresql-9.4.1211.jar:9.4.1211]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:358) ~[postgresql-9.4.1211.jar:9.4.1211]
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:171) ~[postgresql-9.4.1211.jar:9.4.1211]
+	at org.postgresql.jdbc.PgPreparedStatement.executeUpdate(PgPreparedStatement.java:138) ~[postgresql-9.4.1211.jar:9.4.1211]
+	at com.mchange.v2.c3p0.impl.NewProxyPreparedStatement.executeUpdate(NewProxyPreparedStatement.java:105) ~[c3p0-0.9.1.2.jar:0.9.1.2]
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:208) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	... 37 common frames omitted
+14:09:36.839 [main] INFO  com.stu.infra.cdc.udp.Main - UDP Server started on port 9876 
+14:09:36.868 [Thread-7] INFO  c.s.i.cdc.udp.ThreadPooledServer - ThreadPooledServer Started. 
+14:09:50.356 [pool-1-thread-1] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Receive: {"id":14,"originator":"085315718563","encoding":"7","messageDate":"2016-10-19 13:21:15","receiveDate":"2016-10-19 13:21:22","text":"Time=29-09-2016 20:00:00\nGv=220.25,220.02,219.50\nGi=3.32,3.30,3.23\nBv=48.55\nBi=3.40\nGbv=20.34\nGo=0\nRs=1\nBs=1\nGf=0\nLf=0\nRf=0\nBlv=0\nCdc=2","gatewayId":"Modem1"}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+From: 127.0.0.1
+Port: 4023 
+14:09:50.584 [pool-1-thread-1] ERROR c.stu.infra.cdc.udp.SmsUdpResponder - JSON to Java OK --> 085315718563 
+14:09:50.784 [pool-1-thread-1] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Registered phone 085315718563 
+14:09:50.844 [pool-1-thread-1] ERROR c.stu.infra.cdc.udp.SmsUdpResponder - Error UDP Process. 
+org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:129) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:49) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:126) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:112) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:211) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.id.IdentityGenerator$GetGeneratedKeysDelegate.executeAndExtract(IdentityGenerator.java:96) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.id.insert.AbstractReturningDelegate.performInsert(AbstractReturningDelegate.java:58) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3032) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3558) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:98) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:492) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:197) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:181) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:216) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:334) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:289) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:195) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:126) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.event.internal.DefaultSaveOrUpdateEventListener.saveWithGeneratedOrRequestedId(DefaultSaveOrUpdateEventListener.java:209) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.event.internal.DefaultSaveEventListener.saveWithGeneratedOrRequestedId(DefaultSaveEventListener.java:55) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.event.internal.DefaultSaveOrUpdateEventListener.entityIsTransient(DefaultSaveOrUpdateEventListener.java:194) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.event.internal.DefaultSaveEventListener.performSaveOrUpdate(DefaultSaveEventListener.java:49) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.event.internal.DefaultSaveOrUpdateEventListener.onSaveOrUpdate(DefaultSaveOrUpdateEventListener.java:90) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.internal.SessionImpl.fireSave(SessionImpl.java:715) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.internal.SessionImpl.save(SessionImpl.java:707) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.internal.SessionImpl.save(SessionImpl.java:702) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at com.stu.infra.cdc.dao.AbstractDao.save(AbstractDao.java:33) ~[classes/:na]
+	at com.stu.infra.cdc.service.DatalogService.saveDatalog(DatalogService.java:18) ~[classes/:na]
+	at com.stu.infra.cdc.service.DatalogService$$FastClassBySpringCGLIB$$f2954565.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204) ~[spring-core-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:720) ~[spring-aop-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157) ~[spring-aop-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99) ~[spring-tx-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281) ~[spring-tx-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96) ~[spring-tx-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179) ~[spring-aop-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:655) ~[spring-aop-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at com.stu.infra.cdc.service.DatalogService$$EnhancerBySpringCGLIB$$d91db5a5.saveDatalog(<generated>) ~[classes/:na]
+	at com.stu.infra.cdc.udp.SmsUdpResponder.run(SmsUdpResponder.java:195) ~[classes/:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.8.0_101]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.8.0_101]
+	at java.lang.Thread.run(Unknown Source) [na:1.8.0_101]
+Caused by: org.postgresql.util.PSQLException: ERROR: null value in column "dtime" violates not-null constraint
+  Detail: Failing row contains (543, 2, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2458) ~[postgresql-9.4.1211.jar:9.4.1211]
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2158) ~[postgresql-9.4.1211.jar:9.4.1211]
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:291) ~[postgresql-9.4.1211.jar:9.4.1211]
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:432) ~[postgresql-9.4.1211.jar:9.4.1211]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:358) ~[postgresql-9.4.1211.jar:9.4.1211]
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:171) ~[postgresql-9.4.1211.jar:9.4.1211]
+	at org.postgresql.jdbc.PgPreparedStatement.executeUpdate(PgPreparedStatement.java:138) ~[postgresql-9.4.1211.jar:9.4.1211]
+	at com.mchange.v2.c3p0.impl.NewProxyPreparedStatement.executeUpdate(NewProxyPreparedStatement.java:105) ~[c3p0-0.9.1.2.jar:0.9.1.2]
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:208) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	... 37 common frames omitted
+14:15:33.896 [main] INFO  com.stu.infra.cdc.udp.Main - UDP Server started on port 9876 
+14:15:33.902 [Thread-7] INFO  c.s.i.cdc.udp.ThreadPooledServer - ThreadPooledServer Started. 
+14:15:49.563 [pool-1-thread-1] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Receive: {"id":14,"originator":"085315718563","encoding":"7","messageDate":"2016-10-19 13:21:15","receiveDate":"2016-10-19 13:21:22","text":"Time=29-09-2016 20:00:00\nGv=220.25,220.02,219.50\nGi=3.32,3.30,3.23\nBv=48.55\nBi=3.40\nGbv=20.34\nGo=0\nRs=1\nBs=1\nGf=0\nLf=0\nRf=0\nBlv=0\nCdc=2","gatewayId":"Modem1"}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+From: 127.0.0.1
+Port: 4023 
+14:15:49.770 [pool-1-thread-1] ERROR c.stu.infra.cdc.udp.SmsUdpResponder - JSON to Java OK --> 085315718563 
+14:15:49.953 [pool-1-thread-1] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Registered phone 085315718563 
+14:15:49.999 [pool-1-thread-1] ERROR c.stu.infra.cdc.udp.SmsUdpResponder - Error UDP Process. 
+org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:129) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:49) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:126) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:112) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:211) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.id.IdentityGenerator$GetGeneratedKeysDelegate.executeAndExtract(IdentityGenerator.java:96) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.id.insert.AbstractReturningDelegate.performInsert(AbstractReturningDelegate.java:58) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3032) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3558) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:98) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:492) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:197) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:181) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:216) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:334) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:289) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:195) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:126) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.event.internal.DefaultSaveOrUpdateEventListener.saveWithGeneratedOrRequestedId(DefaultSaveOrUpdateEventListener.java:209) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.event.internal.DefaultSaveEventListener.saveWithGeneratedOrRequestedId(DefaultSaveEventListener.java:55) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.event.internal.DefaultSaveOrUpdateEventListener.entityIsTransient(DefaultSaveOrUpdateEventListener.java:194) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.event.internal.DefaultSaveEventListener.performSaveOrUpdate(DefaultSaveEventListener.java:49) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.event.internal.DefaultSaveOrUpdateEventListener.onSaveOrUpdate(DefaultSaveOrUpdateEventListener.java:90) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.internal.SessionImpl.fireSave(SessionImpl.java:715) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.internal.SessionImpl.save(SessionImpl.java:707) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.internal.SessionImpl.save(SessionImpl.java:702) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at com.stu.infra.cdc.dao.AbstractDao.save(AbstractDao.java:33) ~[classes/:na]
+	at com.stu.infra.cdc.service.DatalogService.saveDatalog(DatalogService.java:18) ~[classes/:na]
+	at com.stu.infra.cdc.service.DatalogService$$FastClassBySpringCGLIB$$f2954565.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204) ~[spring-core-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:720) ~[spring-aop-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157) ~[spring-aop-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99) ~[spring-tx-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281) ~[spring-tx-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96) ~[spring-tx-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179) ~[spring-aop-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:655) ~[spring-aop-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at com.stu.infra.cdc.service.DatalogService$$EnhancerBySpringCGLIB$$d91db5a5.saveDatalog(<generated>) ~[classes/:na]
+	at com.stu.infra.cdc.udp.SmsUdpResponder.run(SmsUdpResponder.java:195) ~[classes/:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.8.0_101]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.8.0_101]
+	at java.lang.Thread.run(Unknown Source) [na:1.8.0_101]
+Caused by: org.postgresql.util.PSQLException: ERROR: null value in column "dtime" violates not-null constraint
+  Detail: Failing row contains (544, 2, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2458) ~[postgresql-9.4.1211.jar:9.4.1211]
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2158) ~[postgresql-9.4.1211.jar:9.4.1211]
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:291) ~[postgresql-9.4.1211.jar:9.4.1211]
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:432) ~[postgresql-9.4.1211.jar:9.4.1211]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:358) ~[postgresql-9.4.1211.jar:9.4.1211]
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:171) ~[postgresql-9.4.1211.jar:9.4.1211]
+	at org.postgresql.jdbc.PgPreparedStatement.executeUpdate(PgPreparedStatement.java:138) ~[postgresql-9.4.1211.jar:9.4.1211]
+	at com.mchange.v2.c3p0.impl.NewProxyPreparedStatement.executeUpdate(NewProxyPreparedStatement.java:105) ~[c3p0-0.9.1.2.jar:0.9.1.2]
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:208) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	... 37 common frames omitted
+14:20:21.495 [main] INFO  com.stu.infra.cdc.udp.Main - UDP Server started on port 9876 
+14:20:21.498 [Thread-7] INFO  c.s.i.cdc.udp.ThreadPooledServer - ThreadPooledServer Started. 
+14:20:24.660 [pool-1-thread-1] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Receive: {"id":14,"originator":"085315718563","encoding":"7","messageDate":"2016-10-19 13:21:15","receiveDate":"2016-10-19 13:21:22","text":"Time=29-09-2016 20:00:00\nGv=220.25,220.02,219.50\nGi=3.32,3.30,3.23\nBv=48.55\nBi=3.40\nGbv=20.34\nGo=0\nRs=1\nBs=1\nGf=0\nLf=0\nRf=0\nBlv=0\nCdc=2","gatewayId":"Modem1"}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+From: 127.0.0.1
+Port: 4023 
+14:20:24.863 [pool-1-thread-1] ERROR c.stu.infra.cdc.udp.SmsUdpResponder - JSON to Java OK --> 085315718563 
+14:20:25.075 [pool-1-thread-1] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Registered phone 085315718563 msg:Time=29-09-2016 20:00:00
+Gv=220.25,220.02,219.50
+Gi=3.32,3.30,3.23
+Bv=48.55
+Bi=3.40
+Gbv=20.34
+Go=0
+Rs=1
+Bs=1
+Gf=0
+Lf=0
+Rf=0
+Blv=0
+Cdc=2 
+14:27:17.358 [main] INFO  com.stu.infra.cdc.udp.Main - UDP Server started on port 9876 
+14:27:17.362 [Thread-7] INFO  c.s.i.cdc.udp.ThreadPooledServer - ThreadPooledServer Started. 
+14:28:24.399 [pool-1-thread-1] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Receive: {"id":14,"originator":"085315718563","encoding":"7","messageDate":"2016-10-19 13:21:15","receiveDate":"2016-10-19 13:21:22","text":"Time=29-09-2016 20:00:00\nGv=220.25,220.02,219.50\nGi=3.32,3.30,3.23\nBv=48.55\nBi=3.40\nGbv=20.34\nGo=0\nRs=1\nBs=1\nGf=0\nLf=0\nRf=0\nBlv=0\nCdc=2","gatewayId":"Modem1"}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+From: 127.0.0.1
+Port: 4023 
+14:28:24.609 [pool-1-thread-1] ERROR c.stu.infra.cdc.udp.SmsUdpResponder - JSON to Java OK --> 085315718563 
+14:28:24.804 [pool-1-thread-1] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Registered phone 085315718563 
+14:28:24.804 [pool-1-thread-1] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Old Update 
+14:30:24.424 [pool-1-thread-2] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Receive: {"id":14,"originator":"085315718563","encoding":"7","messageDate":"2016-10-19 13:21:15","receiveDate":"2016-10-19 13:21:22","text":"Time=29-10-2016 20:00:00\nGv=220.25,220.02,219.50\nGi=3.32,3.30,3.23\nBv=48.55\nBi=3.40\nGbv=20.34\nGo=0\nRs=1\nBs=1\nGf=0\nLf=0\nRf=0\nBlv=0\nCdc=2","gatewayId":"Modem1"}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+From: 127.0.0.1
+Port: 4023 
+14:30:24.428 [pool-1-thread-2] ERROR c.stu.infra.cdc.udp.SmsUdpResponder - JSON to Java OK --> 085315718563 
+14:30:24.446 [pool-1-thread-2] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Registered phone 085315718563 
+14:30:24.447 [pool-1-thread-2] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Old Update 
+14:31:07.136 [pool-1-thread-3] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Receive: {"id":14,"originator":"085315718563","encoding":"7","messageDate":"2016-10-19 13:21:15","receiveDate":"2016-10-19 13:21:22","text":"Time=29-10-2016 20:00:00\nGv=220.25,220.02,219.50\nGi=3.32,3.30,3.23\nBv=48.55\nBi=3.40\nGbv=20.34\nGo=0\nRs=1\nBs=1\nGf=0\nLf=0\nRf=0\nBlv=0\nCdc=2","gatewayId":"Modem1"}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+From: 127.0.0.1
+Port: 4023 
+14:31:07.141 [pool-1-thread-3] ERROR c.stu.infra.cdc.udp.SmsUdpResponder - JSON to Java OK --> 085315718563 
+14:31:07.156 [pool-1-thread-3] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Registered phone 085315718563 
+14:31:07.157 [pool-1-thread-3] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Old Update 
+14:32:37.535 [pool-1-thread-4] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Receive: {"id":14,"originator":"085315718563","encoding":"7","messageDate":"2016-10-22 13:21:15","receiveDate":"2016-10-19 13:21:22","text":"Time=29-10-2016 20:00:00\nGv=220.25,220.02,219.50\nGi=3.32,3.30,3.23\nBv=48.55\nBi=3.40\nGbv=20.34\nGo=0\nRs=1\nBs=1\nGf=0\nLf=0\nRf=0\nBlv=0\nCdc=2","gatewayId":"Modem1"}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+From: 127.0.0.1
+Port: 4023 
+14:32:37.541 [pool-1-thread-4] ERROR c.stu.infra.cdc.udp.SmsUdpResponder - JSON to Java OK --> 085315718563 
+14:32:37.552 [pool-1-thread-4] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Registered phone 085315718563 
+14:32:37.552 [pool-1-thread-4] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - New Update 
+14:32:37.552 [pool-1-thread-4] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Valid SMS 
+14:32:37.553 [pool-1-thread-4] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Time --> 29-10-2016 20:00:00 
+14:32:37.553 [pool-1-thread-4] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Gv --> 220.25,220.02,219.50 
+14:32:37.553 [pool-1-thread-4] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Gi --> 3.32,3.30,3.23 
+14:32:37.553 [pool-1-thread-4] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Bv --> 48.55 
+14:32:37.553 [pool-1-thread-4] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Bi --> 3.40 
+14:32:37.553 [pool-1-thread-4] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Gbv --> 20.34 
+14:32:37.553 [pool-1-thread-4] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Go --> 0 
+14:32:37.553 [pool-1-thread-4] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Rs --> 1 
+14:32:37.556 [pool-1-thread-4] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Bs --> 1 
+14:32:37.556 [pool-1-thread-4] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Gf --> 0 
+14:32:37.556 [pool-1-thread-4] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Lf --> 0 
+14:32:37.556 [pool-1-thread-4] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Rf --> 0 
+14:32:37.556 [pool-1-thread-4] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Blv --> 0 
+14:32:37.556 [pool-1-thread-4] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Cdc --> 2 
+14:43:04.663 [main] INFO  com.stu.infra.cdc.udp.Main - UDP Server started on port 9876 
+14:43:04.669 [Thread-7] INFO  c.s.i.cdc.udp.ThreadPooledServer - ThreadPooledServer Started. 
+14:43:17.146 [pool-1-thread-1] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Receive: {"id":14,"originator":"085315718563","encoding":"7","messageDate":"2016-10-22 13:21:15","receiveDate":"2016-10-19 13:21:22","text":"Time=29-10-2016 20:00:00\nGv=220.25,220.02,219.50\nGi=3.32,3.30,3.23\nBv=48.55\nBi=3.40\nGbv=20.34\nGo=0\nRs=1\nBs=1\nGf=0\nLf=0\nRf=0\nBlv=0\nCdc=2","gatewayId":"Modem1"}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+From: 127.0.0.1
+Port: 4023 
+14:43:17.358 [pool-1-thread-1] ERROR c.stu.infra.cdc.udp.SmsUdpResponder - JSON to Java OK --> 085315718563 
+14:43:17.544 [pool-1-thread-1] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Registered phone 085315718563 
+14:43:17.545 [pool-1-thread-1] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Valid SMS 
+14:44:34.526 [pool-1-thread-2] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Receive: "id":14,"originator":"085315718563","encoding":"7","messageDate":"2016-10-22 13:21:15","receiveDate":"2016-10-19 13:21:22","text":"Time=29-10-2016 20:00:00\nGv=220.25,220.02,219.50\nGi=3.32,3.30,3.23\nBv=48.55\nBi=3.40\nGbv=20.34\nGo=0\nRs=1\nBs=1\nGf=0\nLf=0\nRf=0\nBlv=0\nCdc=2","gatewayId":"Modem1"}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+From: 127.0.0.1
+Port: 4023 
+14:44:34.534 [pool-1-thread-2] ERROR c.stu.infra.cdc.udp.SmsUdpResponder - Error UDP Process. 
+com.fasterxml.jackson.core.JsonParseException: Illegal character ((CTRL-CHAR, code 8)): only regular white space (\r, \n, \t) is allowed between tokens
+ at [Source: "id":14,"originator":"085315718563","encoding":"7","messageDate":"2016-10-22 13:21:15","receiveDate":"2016-10-19 13:21:22","text":"Time=29-10-2016 20:00:00\nGv=220.25,220.02,219.50\nGi=3.32,3.30,3.23\nBv=48.55\nBi=3.40\nGbv=20.34\nGo=0\nRs=1\nBs=1\nGf=0\nLf=0\nRf=0\nBlv=0\nCdc=2","gatewayId":"Modem1"}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ; line: 1, column: 2]
+	at com.fasterxml.jackson.core.JsonParser._constructError(JsonParser.java:1581) ~[jackson-core-2.6.3.jar:2.6.3]
+	at com.fasterxml.jackson.core.base.ParserMinimalBase._reportError(ParserMinimalBase.java:533) ~[jackson-core-2.6.3.jar:2.6.3]
+	at com.fasterxml.jackson.core.base.ParserMinimalBase._throwInvalidSpace(ParserMinimalBase.java:484) ~[jackson-core-2.6.3.jar:2.6.3]
+	at com.fasterxml.jackson.core.json.ReaderBasedJsonParser._skipWSOrEnd(ReaderBasedJsonParser.java:2036) ~[jackson-core-2.6.3.jar:2.6.3]
+	at com.fasterxml.jackson.core.json.ReaderBasedJsonParser.nextToken(ReaderBasedJsonParser.java:577) ~[jackson-core-2.6.3.jar:2.6.3]
+	at com.fasterxml.jackson.databind.ObjectMapper._initForReading(ObjectMapper.java:3776) ~[jackson-databind-2.6.3.jar:2.6.3]
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:3721) ~[jackson-databind-2.6.3.jar:2.6.3]
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:2726) ~[jackson-databind-2.6.3.jar:2.6.3]
+	at com.stu.infra.cdc.udp.SmsUdpResponder.run(SmsUdpResponder.java:74) ~[classes/:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.8.0_101]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.8.0_101]
+	at java.lang.Thread.run(Unknown Source) [na:1.8.0_101]
+14:44:35.138 [pool-1-thread-3] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Receive: 2"id":14,"originator":"085315718563","encoding":"7","messageDate":"2016-10-22 13:21:15","receiveDate":"2016-10-19 13:21:22","text":"Time=29-10-2016 20:00:00\nGv=220.25,220.02,219.50\nGi=3.32,3.30,3.23\nBv=48.55\nBi=3.40\nGbv=20.34\nGo=0\nRs=1\nBs=1\nGf=0\nLf=0\nRf=0\nBlv=0\nCdc=2","gatewayId":"Modem1"}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+From: 127.0.0.1
+Port: 4023 
+14:44:35.139 [pool-1-thread-3] ERROR c.stu.infra.cdc.udp.SmsUdpResponder - Error UDP Process. 
+com.fasterxml.jackson.core.JsonParseException: Unexpected character ('"' (code 34)): Expected space separating root-level values
+ at [Source: 2"id":14,"originator":"085315718563","encoding":"7","messageDate":"2016-10-22 13:21:15","receiveDate":"2016-10-19 13:21:22","text":"Time=29-10-2016 20:00:00\nGv=220.25,220.02,219.50\nGi=3.32,3.30,3.23\nBv=48.55\nBi=3.40\nGbv=20.34\nGo=0\nRs=1\nBs=1\nGf=0\nLf=0\nRf=0\nBlv=0\nCdc=2","gatewayId":"Modem1"}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ; line: 1, column: 3]
+	at com.fasterxml.jackson.core.JsonParser._constructError(JsonParser.java:1581) ~[jackson-core-2.6.3.jar:2.6.3]
+	at com.fasterxml.jackson.core.base.ParserMinimalBase._reportError(ParserMinimalBase.java:533) ~[jackson-core-2.6.3.jar:2.6.3]
+	at com.fasterxml.jackson.core.base.ParserMinimalBase._reportUnexpectedChar(ParserMinimalBase.java:462) ~[jackson-core-2.6.3.jar:2.6.3]
+	at com.fasterxml.jackson.core.base.ParserMinimalBase._reportMissingRootWS(ParserMinimalBase.java:478) ~[jackson-core-2.6.3.jar:2.6.3]
+	at com.fasterxml.jackson.core.json.ReaderBasedJsonParser._verifyRootSpace(ReaderBasedJsonParser.java:1399) ~[jackson-core-2.6.3.jar:2.6.3]
+	at com.fasterxml.jackson.core.json.ReaderBasedJsonParser._parsePosNumber(ReaderBasedJsonParser.java:1049) ~[jackson-core-2.6.3.jar:2.6.3]
+	at com.fasterxml.jackson.core.json.ReaderBasedJsonParser.nextToken(ReaderBasedJsonParser.java:686) ~[jackson-core-2.6.3.jar:2.6.3]
+	at com.fasterxml.jackson.databind.ObjectMapper._initForReading(ObjectMapper.java:3776) ~[jackson-databind-2.6.3.jar:2.6.3]
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:3721) ~[jackson-databind-2.6.3.jar:2.6.3]
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:2726) ~[jackson-databind-2.6.3.jar:2.6.3]
+	at com.stu.infra.cdc.udp.SmsUdpResponder.run(SmsUdpResponder.java:74) ~[classes/:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.8.0_101]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.8.0_101]
+	at java.lang.Thread.run(Unknown Source) [na:1.8.0_101]
+14:45:58.452 [pool-1-thread-4] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Receive: {"id":14,"originator":"085315718563","encoding":"7","messageDate":"2016-10-22 12:21:15","receiveDate":"2016-10-19 13:21:22","text":"Time=29-10-2016 19:00:00\nGv=221.25,222.02,218.50\nGi=3.32,3.30,3.23\nBv=48.55\nBi=3.40\nGbv=20.34\nGo=0\nRs=1\nBs=1\nGf=0\nLf=0\nRf=0\nBlv=0\nCdc=1","gatewayId":"Modem1"}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+From: 127.0.0.1
+Port: 4023 
+14:45:58.454 [pool-1-thread-4] ERROR c.stu.infra.cdc.udp.SmsUdpResponder - JSON to Java OK --> 085315718563 
+14:45:58.460 [pool-1-thread-4] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Registered phone 085315718563 
+14:45:58.460 [pool-1-thread-4] INFO  c.stu.infra.cdc.udp.SmsUdpResponder - Valid SMS 

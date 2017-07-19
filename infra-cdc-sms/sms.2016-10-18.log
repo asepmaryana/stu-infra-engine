@@ -1,0 +1,330 @@
+16:32:11.923 [main] INFO  com.stu.infra.cdc.sms.Main - Adding gateway - Modem1 
+16:32:11.924 [main] INFO  com.stu.infra.cdc.sms.Main - SMSServer starting... 
+16:32:29.978 [main] INFO  com.stu.infra.cdc.sms.Main - SMSServer started. 
+17:01:11.287 [SMSServer - InboundPollingThread] INFO  com.stu.infra.cdc.sms.Main - readMessages - SMS RECEIVED ON Modem1:
+6285315718563
+Time=18-10-2016 17:01:01
+GV=209.3,203.6,209.3
+GI=0.0,0.0,0.0
+BV=48.74
+BI=0.0
+GBV=0.0
+GO=1
+BS=1
+RS=1
+GF=0
+LF=0
+RF=0
+BLV=0
+CDC=2
+-----------------------------------------------
+ 
+17:01:57.631 [Thread-18] INFO  c.stu.infra.cdc.sms.Main$SmsHandler - Request http://infra.sinergiteknologi.com/api/sms/trap --> OK 
+17:02:42.746 [SMSServer - InboundPollingThread] INFO  com.stu.infra.cdc.sms.Main - readMessages - SMS RECEIVED ON Modem1:
+6285315718563
+Time=18-10-2016 17:02:40
+GV=204.7,199.0,206.6
+GI=0.0,0.0,0.0
+BV=48.51
+BI=0.0
+GBV=0.0
+GO=1
+BS=0
+RS=0
+GF=0
+LF=0
+RF=0
+BLV=0
+CDC=2
+-----------------------------------------------
+ 
+17:02:43.533 [Thread-19] INFO  c.stu.infra.cdc.sms.Main$SmsHandler - Request http://infra.sinergiteknologi.com/api/sms/trap --> OK 
+17:03:03.617 [SMSServer - InboundPollingThread] INFO  com.stu.infra.cdc.sms.Main - readMessages - SMS RECEIVED ON Modem1:
+6285315718563
+Time=18-10-2016 17:03:00
+GV=0.0,0.0,0.0
+GI=0.0,0.0,0.0
+BV=49.01
+BI=0.0
+GBV=0.0
+GO=0
+BS=0
+RS=0
+GF=0
+LF=0
+RF=0
+BLV=0
+CDC=2
+-----------------------------------------------
+ 
+17:03:10.630 [Thread-20] INFO  c.stu.infra.cdc.sms.Main$SmsHandler - Request http://infra.sinergiteknologi.com/api/sms/trap --> OK 
+18:01:11.940 [SMSServer - InboundPollingThread] INFO  com.stu.infra.cdc.sms.Main - readMessages - SMS RECEIVED ON Modem1:
+6285315718563
+Time=18-10-2016 18:01:01
+GV=0.0,0.0,0.0
+GI=0.0,0.0,0.0
+BV=48.63
+BI=0.0
+GBV=0.0
+GO=0
+BS=0
+RS=0
+GF=0
+LF=0
+RF=0
+BLV=0
+CDC=2
+-----------------------------------------------
+ 
+18:01:12.784 [Thread-21] INFO  c.stu.infra.cdc.sms.Main$SmsHandler - Request http://infra.sinergiteknologi.com/api/sms/trap --> OK 
+19:01:11.855 [SMSServer - InboundPollingThread] INFO  com.stu.infra.cdc.sms.Main - readMessages - SMS RECEIVED ON Modem1:
+6285315718563
+Time=18-10-2016 19:01:01
+GV=0.0,0.0,0.0
+GI=0.0,0.0,0.0
+BV=48.99
+BI=0.0
+GBV=0.0
+GO=0
+BS=0
+RS=0
+GF=0
+LF=0
+RF=0
+BLV=0
+CDC=2
+-----------------------------------------------
+ 
+19:01:12.026 [NotifyQueueManager] INFO  c.s.i.c.s.Main$InboundNotification - InboundNotification - SMS RECEIVED ON Modem1:
+6285315718563
+Time=18-10-2016 19:01:01
+GV=0.0,0.0,0.0
+GI=0.0,0.0,0.0
+BV=48.99
+BI=0.0
+GBV=0.0
+GO=0
+BS=0
+RS=0
+GF=0
+LF=0
+RF=0
+BLV=0
+CDC=2
+-----------------------------------------------
+ 
+19:01:12.917 [Thread-23] INFO  c.stu.infra.cdc.sms.Main$SmsHandler - Request http://infra.sinergiteknologi.com/api/sms/trap --> OK 
+19:01:18.995 [Thread-22] INFO  c.stu.infra.cdc.sms.Main$SmsHandler - Request http://infra.sinergiteknologi.com/api/sms/trap --> <!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Database Error</title>
+<style type="text/css">
+
+::selection{ background-color: #E13300; color: white; }
+::moz-selection{ background-color: #E13300; color: white; }
+::webkit-selection{ background-color: #E13300; color: white; }
+
+body {
+	background-color: #fff;
+	margin: 40px;
+	font: 13px/20px normal Helvetica, Arial, sans-serif;
+	color: #4F5155;
+}
+
+a {
+	color: #003399;
+	background-color: transparent;
+	font-weight: normal;
+}
+
+h1 {
+	color: #444;
+	background-color: transparent;
+	border-bottom: 1px solid #D0D0D0;
+	font-size: 19px;
+	font-weight: normal;
+	margin: 0 0 14px 0;
+	padding: 14px 15px 10px 15px;
+}
+
+code {
+	font-family: Consolas, Monaco, Courier New, Courier, monospace;
+	font-size: 12px;
+	background-color: #f9f9f9;
+	border: 1px solid #D0D0D0;
+	color: #002166;
+	display: block;
+	margin: 14px 0 14px 0;
+	padding: 12px 10px 12px 10px;
+}
+
+#container {
+	margin: 10px;
+	border: 1px solid #D0D0D0;
+	-webkit-box-shadow: 0 0 8px #D0D0D0;
+}
+
+p {
+	margin: 12px 15px 12px 15px;
+}
+</style>
+</head>
+<body>
+	<div id="container">
+		<h1>A Database Error Occurred</h1>
+		<p>Error Number: </p><p>ERROR:  duplicate key value violates unique constraint "data_log_node_id_dtime_key"
+DETAIL:  Key (node_id, dtime)=(2, 2016-10-18 19:01:01) already exists.</p><p>INSERT INTO "data_log" ("genset_vr", "genset_vs", "genset_vt", "genset_cr", "genset_cs", "genset_ct", "batt_volt", "batt_curr", "genset_batt_volt", "genset_status", "breaker_status", "recti_status", "genset_fail", "low_fuel", "recti_fail", "batt_low", "cdc_mode", "node_id", "dtime") VALUES ('0.0', '0.0', '0.0', '0.0', '0.0', '0.0', '48.99', '0.0', '0.0', '0', '0', '0', '0', '0', '0', '0', '2', '2', '2016-10-18 19:01:01')</p><p>Filename: /home/admin/www/infra/modules/api/models/datalogmodel.php</p><p>Line Number: 14</p>	</div>
+</body>
+</html> 
+19:03:03.918 [SMSServer - InboundPollingThread] INFO  com.stu.infra.cdc.sms.Main - readMessages - SMS RECEIVED ON Modem1:
+6285315718563
+Time=18-10-2016 19:02:56
+GV=188.9,182.3,190.3
+GI=0.0,0.0,0.0
+BV=48.26
+BI=0.0
+GBV=0.0
+GO=1
+BS=0
+RS=0
+GF=0
+LF=0
+RF=0
+BLV=0
+CDC=2
+-----------------------------------------------
+ 
+19:03:07.997 [Thread-24] INFO  c.stu.infra.cdc.sms.Main$SmsHandler - Request http://infra.sinergiteknologi.com/api/sms/trap --> OK 
+19:03:25.231 [SMSServer - InboundPollingThread] INFO  com.stu.infra.cdc.sms.Main - readMessages - SMS RECEIVED ON Modem1:
+6285315718563
+Time=18-10-2016 19:03:18
+GV=189.7,185.1,190.1
+GI=0.0,0.0,0.0
+BV=48.39
+BI=0.0
+GBV=0.0
+GO=1
+BS=1
+RS=1
+GF=0
+LF=0
+RF=0
+BLV=0
+CDC=2
+-----------------------------------------------
+ 
+19:03:28.981 [Thread-25] INFO  c.stu.infra.cdc.sms.Main$SmsHandler - Request http://infra.sinergiteknologi.com/api/sms/trap --> OK 
+20:01:03.566 [SMSServer - InboundPollingThread] INFO  com.stu.infra.cdc.sms.Main - readMessages - SMS RECEIVED ON Modem1:
+6285315718563
+Time=18-10-2016 20:01:01
+GV=196.0,190.3,201.1
+GI=0.0,0.0,0.0
+BV=48.63
+BI=0.0
+GBV=0.0
+GO=1
+BS=1
+RS=1
+GF=0
+LF=0
+RF=0
+BLV=0
+CDC=2
+-----------------------------------------------
+ 
+20:01:04.332 [Thread-26] INFO  c.stu.infra.cdc.sms.Main$SmsHandler - Request http://infra.sinergiteknologi.com/api/sms/trap --> OK 
+21:01:03.402 [SMSServer - InboundPollingThread] INFO  com.stu.infra.cdc.sms.Main - readMessages - SMS RECEIVED ON Modem1:
+6285315718563
+Time=18-10-2016 21:01:01
+GV=199.7,193.6,201.8
+GI=0.0,0.0,0.0
+BV=49.17
+BI=0.0
+GBV=0.0
+GO=1
+BS=1
+RS=1
+GF=0
+LF=0
+RF=0
+BLV=0
+CDC=2
+-----------------------------------------------
+ 
+21:01:05.168 [Thread-27] INFO  c.stu.infra.cdc.sms.Main$SmsHandler - Request http://infra.sinergiteknologi.com/api/sms/trap --> OK 
+22:01:09.267 [SMSServer - InboundPollingThread] INFO  com.stu.infra.cdc.sms.Main - readMessages - SMS RECEIVED ON Modem1:
+6285315718563
+Time=18-10-2016 22:01:01
+GV=195.8,193.0,199.4
+GI=0.0,0.0,0.0
+BV=48.72
+BI=0.0
+GBV=0.0
+GO=1
+BS=1
+RS=1
+GF=0
+LF=0
+RF=0
+BLV=0
+CDC=2
+-----------------------------------------------
+ 
+22:01:10.377 [Thread-28] INFO  c.stu.infra.cdc.sms.Main$SmsHandler - Request http://infra.sinergiteknologi.com/api/sms/trap --> OK 
+22:03:31.738 [SMSServer - InboundPollingThread] INFO  com.stu.infra.cdc.sms.Main - readMessages - SMS RECEIVED ON Modem1:
+6285315718563
+Time=18-10-2016 22:03:30
+GV=194.8,192.7,195.6
+GI=0.0,0.0,0.0
+BV=48.15
+BI=0.0
+GBV=0.0
+GO=1
+BS=0
+RS=0
+GF=0
+LF=0
+RF=0
+BLV=0
+CDC=2
+-----------------------------------------------
+ 
+22:03:32.722 [Thread-29] INFO  c.stu.infra.cdc.sms.Main$SmsHandler - Request http://infra.sinergiteknologi.com/api/sms/trap --> OK 
+22:03:52.832 [SMSServer - InboundPollingThread] INFO  com.stu.infra.cdc.sms.Main - readMessages - SMS RECEIVED ON Modem1:
+6285315718563
+Time=18-10-2016 22:03:51
+GV=0.0,0.0,0.0
+GI=0.0,0.0,0.0
+BV=48.72
+BI=0.0
+GBV=0.0
+GO=0
+BS=0
+RS=0
+GF=0
+LF=0
+RF=0
+BLV=0
+CDC=2
+-----------------------------------------------
+ 
+22:03:56.925 [Thread-30] INFO  c.stu.infra.cdc.sms.Main$SmsHandler - Request http://infra.sinergiteknologi.com/api/sms/trap --> OK 
+23:01:03.345 [NotifyQueueManager] INFO  c.s.i.c.s.Main$InboundNotification - InboundNotification - SMS RECEIVED ON Modem1:
+6285315718563
+Time=18-10-2016 23:01:01
+GV=0.0,0.0,0.0
+GI=0.0,0.0,0.0
+BV=48.40
+BI=0.0
+GBV=0.0
+GO=0
+BS=0
+RS=0
+GF=0
+LF=0
+RF=0
+BLV=0
+CDC=2
+-----------------------------------------------
+ 
+23:01:05.908 [Thread-31] INFO  c.stu.infra.cdc.sms.Main$SmsHandler - Request http://infra.sinergiteknologi.com/api/sms/trap --> OK 

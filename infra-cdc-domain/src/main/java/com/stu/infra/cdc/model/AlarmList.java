@@ -22,7 +22,7 @@ public class AlarmList implements java.io.Serializable {
 	@Column(name = "name", nullable = false, length=50)
 	private String name;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "severity_id")
 	public Severity severity;
 	

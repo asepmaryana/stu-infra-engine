@@ -1,16 +1,10 @@
 package com.stu.infra.cdc.model;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,10 +20,7 @@ public class Severity implements java.io.Serializable {
 	private String name;
 	
 	@Column(name = "color", length=7)
-	private String color;
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "alarmList", cascade = CascadeType.ALL)
-	private Set<AlarmList> alarmLists = new HashSet<AlarmList>(0);
+	private String color;	
 	
 	public Severity() {}
 
@@ -55,14 +46,6 @@ public class Severity implements java.io.Serializable {
 
 	public void setColor(String color) {
 		this.color = color;
-	}
-
-	public Set<AlarmList> getAlarmLists() {
-		return alarmLists;
-	}
-
-	public void setAlarmLists(Set<AlarmList> alarmLists) {
-		this.alarmLists = alarmLists;
-	}
+	}	
 	
 }

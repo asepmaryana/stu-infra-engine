@@ -1,7 +1,10 @@
 **/lib
 **/target
 **/logs
+**/dist
 
 .settings/
 *.jar
 *.db
+/Servers/
+.metadata

@@ -16,18 +16,20 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.joda.JodaModule;
 import com.stu.infra.cdc.config.UdpServerConfig;
 import com.stu.infra.cdc.dao.AppConstant;
+import com.stu.infra.cdc.model.AlarmList;
 import com.stu.infra.cdc.model.CdcMsg;
 import com.stu.infra.cdc.model.Datalog;
 import com.stu.infra.cdc.model.Inbox;
 import com.stu.infra.cdc.model.Node;
 import com.stu.infra.cdc.model.OprStatus;
 import com.stu.infra.cdc.model.Outbox;
+import com.stu.infra.cdc.service.AlarmListService;
 import com.stu.infra.cdc.service.DatalogService;
 import com.stu.infra.cdc.service.InboxService;
 import com.stu.infra.cdc.service.NodeService;
 import com.stu.infra.cdc.service.OutboxService;
 
-public class SmsUdpResponder implements Runnable {
+public class SmsUdpResponder implements Runnable, AppConstant {
 	
 	private NodeService nodeService;
 	
@@ -36,6 +38,8 @@ public class SmsUdpResponder implements Runnable {
 	private InboxService inboxService;
 	
 	private OutboxService outboxService;
+	
+	private AlarmListService alarmListService;
 	
 	private byte[] sendData = new byte[1024];
 	
@@ -50,6 +54,8 @@ public class SmsUdpResponder implements Runnable {
 		this.datalogService = SpringManager.getInstance().getBean(DatalogService.class);
 		this.inboxService = SpringManager.getInstance().getBean(InboxService.class);
 		this.outboxService = SpringManager.getInstance().getBean(OutboxService.class);
+		this.alarmListService = SpringManager.getInstance().getBean(AlarmListService.class);
+		
 	}
 
 	public byte[] getSendData() {
@@ -122,10 +128,12 @@ public class SmsUdpResponder implements Runnable {
             	{
             		LoggerFactory.getLogger(SmsUdpResponder.class).debug("Valid SMS");
             		
+            		// set node last update from timestamp of operator
+            		Date updated = msg.getMessageDate().toDate();
             		Datalog data = new Datalog();
                 	data.setNode(node);
-            		Date updated = null;
-            		
+                	data.setdTime(new LocalDateTime(updated.getTime()));
+                	
             		for(String param : messages)
             		{
             			param = param.trim();
@@ -135,12 +143,8 @@ public class SmsUdpResponder implements Runnable {
             			String val = param.substring(param.indexOf("=")+1, param.trim().length());
             			
             			LoggerFactory.getLogger(SmsUdpResponder.class).debug(key + " --> " + val);
-
-            			if(key.toUpperCase().equals("1")) {
-            				updated = SmsUtil.parseDate(val);
-            				if(updated != null) data.setdTime(node.getUpdatedAt());
-            			}
-            			else if(key.toUpperCase().equals("2")) {
+            			
+            			if(key.toUpperCase().equals("2")) {
             				String gvs [] = val.split(",");
             				if(gvs.length == 3) {
             					node.setGensetVr(new BigDecimal(gvs[0]));
@@ -180,10 +184,12 @@ public class SmsUdpResponder implements Runnable {
             				node.setGensetStatus(new Short(val));
             				data.setGensetStatus(node.getGensetStatus());
             			}
+            			// genset on fail
             			else if(key.toUpperCase().equals("10")) {
             				node.setGensetOnFail(new Short(val));
             				data.setGensetOnFail(node.getGensetOnFail());
             			}
+            			// genset off fail
             			else if(key.toUpperCase().equals("11")) {
             				node.setGensetOffFail(new Short(val));
             				data.setGensetOffFail(node.getGensetOffFail());
@@ -300,5 +306,10 @@ public class SmsUdpResponder implements Runnable {
 			response = e.getMessage();
 			LoggerFactory.getLogger(SmsUdpResponder.class).error("Error SETOUT Process.", e);
 		}
+	}
+	
+	private void createNotifSms(int alarmId, Node node)
+	{
+		
 	}
 }

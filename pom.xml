@@ -80,7 +80,6 @@
   	<module>infra-cdc-domain</module>
   	<module>infra-cdc-sms</module>
   	<module>infra-cdc-service</module>
-  	<module>infra-cdc-ui</module>
   	<module>infra-cdc-web</module>  	
   	<module>infra-cdc-udp</module>
   </modules>

@@ -73,8 +73,8 @@ public class NodeDao extends AbstractDao<Integer, Node> {
 	@SuppressWarnings("unchecked")
 	public List<Node> findComLost(LocalDateTime now) {
 		Criteria criteria = createEntityCriteria();
-		criteria.add(Restrictions.lt("updatedAt", now));
-		criteria.add(Restrictions.ne("oprStatus.id", AppConstant.COMMLOST_STATUS));
+		criteria.add(Restrictions.gt("updatedAt", now));
+		criteria.add(Restrictions.eq("oprStatus.id", AppConstant.OPERATIONAL_STATUS));
 		
 		return criteria.list();
 	}

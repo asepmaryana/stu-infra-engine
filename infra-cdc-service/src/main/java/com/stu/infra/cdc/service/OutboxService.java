@@ -21,6 +21,10 @@ public class OutboxService {
 		return outboxDao.findUnprocessed(limit);
 	}
 	
+	public void save(Outbox msg) {
+		outboxDao.save(msg);		
+	}
+	
 	public void update(Outbox msg) {
 		outboxDao.update(msg);		
 	}

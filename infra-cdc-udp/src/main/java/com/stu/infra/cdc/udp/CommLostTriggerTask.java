@@ -25,8 +25,9 @@ public class CommLostTriggerTask implements Runnable {
 	
 	@Override
 	public void run() {
-		LoggerFactory.getLogger(CommLostTriggerTask.class).debug("Comm lost trigger run...");
+		LocalDateTime from = now;
 		now = now.minusHours(config.getCommLostTime().intValue());
+		LoggerFactory.getLogger(CommLostTriggerTask.class).info("find comm lost between "+from+" and "+now);
 		List<Node> nodes = nodeService.findComLost(now);
 		if(nodes.isEmpty() || nodes == null) 
 			LoggerFactory.getLogger(CommLostTriggerTask.class).debug("COMM LOST is empty.");
@@ -35,7 +36,7 @@ public class CommLostTriggerTask implements Runnable {
 			for(Node node : nodes)
 			{
 				LoggerFactory.getLogger(CommLostTriggerTask.class).info(node.getName() + " was comm lost.");
-				node.setOprStatus(new OprStatus(AppConstant.COMM_LOST));
+				node.setOprStatus(new OprStatus(AppConstant.COMMLOST_STATUS));
 				nodeService.updateNode(node);
 			}
 		}

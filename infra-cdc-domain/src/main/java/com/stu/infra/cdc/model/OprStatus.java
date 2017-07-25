@@ -1,10 +1,16 @@
 package com.stu.infra.cdc.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +25,9 @@ public class OprStatus implements java.io.Serializable {
 	
 	@Column(name = "name", nullable = false, length=10)
 	private String name;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "oprStatus", cascade = CascadeType.ALL)
+	private Set<Node> nodes = new HashSet<Node>(0);
 	
 	public OprStatus() {}
 	
@@ -40,6 +49,14 @@ public class OprStatus implements java.io.Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Set<Node> getNodes() {
+		return nodes;
+	}
+
+	public void setNodes(Set<Node> nodes) {
+		this.nodes = nodes;
 	}
 	
 }

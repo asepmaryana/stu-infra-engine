@@ -96,7 +96,6 @@ public class SmsUdpResponder implements Runnable, AppConstant {
 	}
 	
 	/// SMS Inbox handler
-	@SuppressWarnings("unchecked")
 	private void smsInb(String smsJson, InetAddress ipAddress, int port) {
 		ObjectMapper mapper = new ObjectMapper();
 		String response = "FAILED";

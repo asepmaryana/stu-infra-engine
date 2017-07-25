@@ -12,6 +12,7 @@ public interface AppConstant {
 	public static final int ENGINE_HIGH_TEMP	= 7;
 	public static final int OIL_PRESSURE		= 8;
 	public static final int MAINTENANCE			= 9;
+	public static final int COMM_LOST			= 10;
 	
 	// status of node
 	public static final int OPERATIONAL_STATUS	= 1;

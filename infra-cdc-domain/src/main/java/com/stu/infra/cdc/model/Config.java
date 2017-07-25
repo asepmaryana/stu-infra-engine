@@ -30,6 +30,15 @@ public class Config implements java.io.Serializable {
 	@Column(name = "sms_limit", nullable = false)
 	private Integer smsLimit			= 50;
 	
+	@Column(name = "batt_volt")
+	private Float battVolt;
+	
+	@Column(name = "comm_lost_time")
+	private Short commLostTime;
+	
+	@Column(name = "shift_schedule", nullable = false, length=20)
+	private String shiftSchedule		= "0 0 9 * * *";
+	
 	public Config() {}
 
 	public String getId() {
@@ -78,6 +87,30 @@ public class Config implements java.io.Serializable {
 
 	public void setSmsLimit(Integer smsLimit) {
 		this.smsLimit = smsLimit;
+	}
+
+	public Float getBattVolt() {
+		return battVolt;
+	}
+
+	public void setBattVolt(Float battVolt) {
+		this.battVolt = battVolt;
+	}
+
+	public Short getCommLostTime() {
+		return commLostTime;
+	}
+
+	public void setCommLostTime(Short commLostTime) {
+		this.commLostTime = commLostTime;
+	}
+
+	public String getShiftSchedule() {
+		return shiftSchedule;
+	}
+
+	public void setShiftSchedule(String shiftSchedule) {
+		this.shiftSchedule = shiftSchedule;
 	}
 	
 }

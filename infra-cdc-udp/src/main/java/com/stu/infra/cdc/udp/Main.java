@@ -53,6 +53,11 @@ public class Main {
 		
 		CronTrigger cron = new CronTrigger(config.getCronScheduler());
 		scheduler.schedule(new AlarmTriggerTask(nodeService, config.getNodeLimit(), config.getAlarmTolerance()), cron);
+		scheduler.scheduleAtFixedRate(new CommLostTriggerTask(nodeService, config), new Date(), 60000);
+		
+		// shift schedule notification
+		CronTrigger cronShift = new CronTrigger(config.getShiftSchedule());
+		
 		//scheduler.scheduleAtFixedRate(new StatusTriggerTask(nodeService), new Date(), 60000);
 		
 		server = new ThreadPooledServer(config.getServerPort());

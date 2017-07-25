@@ -48,7 +48,7 @@ public class Node  implements java.io.Serializable {
 	@JoinColumn(name = "customer_id")
 	private Customer customer;	
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "opr_status_id")
 	private OprStatus oprStatus;
 	

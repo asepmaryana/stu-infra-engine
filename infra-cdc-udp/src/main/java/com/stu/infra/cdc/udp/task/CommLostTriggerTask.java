@@ -15,20 +15,18 @@ public class CommLostTriggerTask implements Runnable {
 	
 	private NodeService nodeService;
 	private Config config;
-	private LocalDateTime now;
 	
 	public CommLostTriggerTask(NodeService nodeService, Config config) {
 		this.nodeService = nodeService;
 		this.config = config;
-		this.now = new LocalDateTime();
 	}
 	
 	@Override
 	public void run() {
-		LocalDateTime from = now;
+		LocalDateTime now = new LocalDateTime();
 		now = now.minusHours(config.getCommLostTime().intValue());
-		LoggerFactory.getLogger(CommLostTriggerTask.class).info("find comm lost between "+from+" and "+now);
 		List<Node> nodes = nodeService.findComLost(now);
+		LoggerFactory.getLogger(CommLostTriggerTask.class).info("find comm lost where status = 1 and updatedAt < "+now + " --> " + nodes.size());
 		if(nodes.isEmpty() || nodes == null) 
 			LoggerFactory.getLogger(CommLostTriggerTask.class).debug("COMM LOST is empty.");
 		else

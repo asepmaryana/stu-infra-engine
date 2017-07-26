@@ -36,8 +36,8 @@ public class Config implements java.io.Serializable {
 	@Column(name = "comm_lost_time")
 	private Short commLostTime;
 	
-	@Column(name = "shift_schedule", nullable = false, length=20)
-	private String shiftSchedule		= "0 0 9 * * *";
+	@Column(name = "shift_time", nullable = false, length=6)
+	private String shiftTime		= "09:00";
 	
 	public Config() {}
 
@@ -105,12 +105,11 @@ public class Config implements java.io.Serializable {
 		this.commLostTime = commLostTime;
 	}
 
-	public String getShiftSchedule() {
-		return shiftSchedule;
+	public String getShiftTime() {
+		return shiftTime;
 	}
 
-	public void setShiftSchedule(String shiftSchedule) {
-		this.shiftSchedule = shiftSchedule;
+	public void setShiftTime(String shiftTime) {
+		this.shiftTime = shiftTime;
 	}
-	
 }

@@ -9,22 +9,23 @@ import org.springframework.scheduling.support.CronTrigger;
 import com.stu.infra.cdc.model.Config;
 import com.stu.infra.cdc.service.ConfigService;
 import com.stu.infra.cdc.service.NodeService;
+import com.stu.infra.cdc.service.OperatorService;
+import com.stu.infra.cdc.service.OutboxService;
 import com.stu.infra.cdc.udp.task.AlarmTriggerTask;
 import com.stu.infra.cdc.udp.task.CommLostTriggerTask;
+import com.stu.infra.cdc.udp.task.ShiftNotificationTask;
 
 public class Main {
 	
 	Config config	  			= null;
-	
 	boolean shutdown 		  	= false;
-	
 	ThreadPooledServer server 	= null;
-	
 	ThreadPoolTaskScheduler scheduler = null;
 	
 	NodeService nodeService 	= null;
-	
 	ConfigService confService 	= null;
+	OperatorService operatorService 	= null;
+	OutboxService outboxService = null;
 	
 	class Shutdown extends Thread
 	{
@@ -50,14 +51,16 @@ public class Main {
 	{		
 		confService = SpringManager.getInstance().getBean(ConfigService.class);
 		nodeService = SpringManager.getInstance().getBean(NodeService.class);
+		operatorService = SpringManager.getInstance().getBean(OperatorService.class);
+		outboxService = SpringManager.getInstance().getBean(OutboxService.class);
+		
 		config 		= confService.getConfig();
 		scheduler 	= SpringManager.getInstance().getBean(ThreadPoolTaskScheduler.class);
 		
 		CronTrigger cron = new CronTrigger(config.getCronScheduler());
 		scheduler.schedule(new AlarmTriggerTask(nodeService, config.getNodeLimit()), cron);
 		scheduler.scheduleAtFixedRate(new CommLostTriggerTask(nodeService, config), new Date(), 60000);
-		
-		//scheduler.scheduleAtFixedRate(new StatusTriggerTask(nodeService), new Date(), 60000);
+		scheduler.scheduleAtFixedRate(new ShiftNotificationTask(operatorService, outboxService, config), new Date(), 60000);
 		
 		server = new ThreadPooledServer(config.getServerPort());
 		new Thread(server).start();

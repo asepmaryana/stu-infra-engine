@@ -71,7 +71,7 @@ public class NodeDao extends AbstractDao<Integer, Node> {
 	public List<Node> findComLost(LocalDateTime now) {
 		Criteria criteria = createEntityCriteria();
 		criteria.add(Restrictions.eq("oprStatus.id", AppConstant.OPERATIONAL_STATUS));
-		criteria.add(Restrictions.gt("updatedAt", now));
+		criteria.add(Restrictions.lt("updatedAt", now));
 		
 		return criteria.list();
 	}

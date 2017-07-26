@@ -19,7 +19,6 @@ public class CustomLocalDateTimeSerializer extends JsonSerializer<LocalDateTime>
 	@Override
 	public void serialize(LocalDateTime dateTime, JsonGenerator gen, SerializerProvider sp)
 			throws IOException, JsonProcessingException {
-		// TODO Auto-generated method stub
 		gen.writeString(formatter.print(dateTime));
 	}
 

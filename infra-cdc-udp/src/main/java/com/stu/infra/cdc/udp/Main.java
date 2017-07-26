@@ -9,6 +9,8 @@ import org.springframework.scheduling.support.CronTrigger;
 import com.stu.infra.cdc.model.Config;
 import com.stu.infra.cdc.service.ConfigService;
 import com.stu.infra.cdc.service.NodeService;
+import com.stu.infra.cdc.udp.task.AlarmTriggerTask;
+import com.stu.infra.cdc.udp.task.CommLostTriggerTask;
 
 public class Main {
 	
@@ -52,11 +54,8 @@ public class Main {
 		scheduler 	= SpringManager.getInstance().getBean(ThreadPoolTaskScheduler.class);
 		
 		CronTrigger cron = new CronTrigger(config.getCronScheduler());
-		scheduler.schedule(new AlarmTriggerTask(nodeService, config.getNodeLimit(), config.getAlarmTolerance()), cron);
+		scheduler.schedule(new AlarmTriggerTask(nodeService, config.getNodeLimit()), cron);
 		scheduler.scheduleAtFixedRate(new CommLostTriggerTask(nodeService, config), new Date(), 60000);
-		
-		// shift schedule notification
-		CronTrigger cronShift = new CronTrigger(config.getShiftSchedule());
 		
 		//scheduler.scheduleAtFixedRate(new StatusTriggerTask(nodeService), new Date(), 60000);
 		

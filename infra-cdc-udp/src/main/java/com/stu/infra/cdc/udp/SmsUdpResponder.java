@@ -83,7 +83,7 @@ public class SmsUdpResponder implements Runnable, AppConstant {
 	}
 
 	public void run() {
-		// TODO Auto-generated method stub
+		
 		String smsJson = new String(receivePacket.getData());
 		
 		InetAddress ipAddress = receivePacket.getAddress();

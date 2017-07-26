@@ -25,7 +25,7 @@ public class ShiftNotificationTask implements Runnable {
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		
 		List<Operator> operators = operatorService.findByDay(Calendar.getInstance().get(Calendar.DAY_OF_WEEK));
 		if(operators.isEmpty() || operators == null)
 			LoggerFactory.getLogger(ShiftNotificationTask.class).debug("No operator found.");

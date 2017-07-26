@@ -1,4 +1,4 @@
-package com.stu.infra.cdc.udp;
+package com.stu.infra.cdc.udp.task;
 
 import java.util.List;
 

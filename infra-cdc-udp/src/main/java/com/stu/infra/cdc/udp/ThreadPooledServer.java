@@ -44,7 +44,7 @@ public class ThreadPooledServer implements Runnable {
     }
     
 	public void run() {
-		// TODO Auto-generated method stub
+		
 		synchronized(this){ this.runningThread = Thread.currentThread(); }
 		
 		openServerSocket();

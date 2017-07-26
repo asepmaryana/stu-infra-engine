@@ -25,20 +25,17 @@ public class NodeDao extends AbstractDao<Integer, Node> {
 	public List<Node> findFailed(LocalDateTime now, int limit) {
 		
 		Criteria criteria = createEntityCriteria();
+		Criterion operational = Restrictions.eq("oprStatus.id", AppConstant.OPERATIONAL_STATUS);
 		
-		/// where operationalStatus = 1 
-		Criterion mainOff = Restrictions.eq("oprStatus.id", AppConstant.OPERATIONAL_STATUS);
+		// failed off, if genset is on and now > next off
+		Criterion genOn  	= Restrictions.and(operational, Restrictions.eq("gensetStatus", (short)1));
+		Criterion nextOff 	= Restrictions.and(genOn, Restrictions.lt("nextOff", now));
 		
-		/// where maintainStatus = 0 and gensetStatus = 0
-		Criterion genOn  = Restrictions.and(mainOff, Restrictions.eq("gensetStatus", (short)0));
+		// failed on, if genset is off and next on time < now time	
+		Criterion genOff  	= Restrictions.and(operational, Restrictions.eq("gensetStatus", (short)0));
+		Criterion nextOn   	= Restrictions.and(genOff, Restrictions.lt("nextOn", now));
 		
-		/// where maintainStatus = 0 and gensetStatus = 0 and nextOn < now
-		Criterion expOn   = Restrictions.and(genOn, Restrictions.lt("nextOn", now));
-		
-		Criterion genOff  = Restrictions.and(mainOff, Restrictions.eq("gensetStatus", (short)1));
-		Criterion expOff   = Restrictions.and(genOff, Restrictions.lt("nextOff", now));
-		
-		criteria.add(Restrictions.or(expOn, expOff));
+		criteria.add(Restrictions.or(nextOff, nextOn));
 		criteria.addOrder(Order.asc("id"));		
 		if(limit > 0)
 		{
@@ -73,8 +70,8 @@ public class NodeDao extends AbstractDao<Integer, Node> {
 	@SuppressWarnings("unchecked")
 	public List<Node> findComLost(LocalDateTime now) {
 		Criteria criteria = createEntityCriteria();
-		criteria.add(Restrictions.gt("updatedAt", now));
 		criteria.add(Restrictions.eq("oprStatus.id", AppConstant.OPERATIONAL_STATUS));
+		criteria.add(Restrictions.gt("updatedAt", now));
 		
 		return criteria.list();
 	}

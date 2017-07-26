@@ -3,6 +3,7 @@
   <artifactId>infra-cdc-sms</artifactId>
 	
 	<dependencies>
+		
 		<!-- Spring and Transactions -->
 		<dependency>
 			<groupId>org.springframework</groupId>

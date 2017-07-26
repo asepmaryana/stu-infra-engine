@@ -142,7 +142,6 @@ public class Main {
 				
 				lists = mapper.readValue(smsJson, new TypeReference<List<Outbox>>(){});
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				LoggerFactory.getLogger(SmsHandler.class).error("Read SMS Outbox from UDP server error : " + e.getMessage());
 			}
         	
@@ -206,21 +205,21 @@ public class Main {
 	class OutboundNotification implements IOutboundMessageNotification 
 	{
 		public void process(AGateway gateway, OutboundMessage msg) {
-			// TODO Auto-generated method stub
+			
 		}
 	}
 	
 	class QueueSendingNotification implements IQueueSendingNotification
 	{
 		public void process(AGateway gateway, OutboundMessage msg) {
-			// TODO Auto-generated method stub
+			
 		}
 	}
 	
 	class CallNotification implements ICallNotification 
 	{
 		public void process(AGateway gateway, String callerId) {
-			// TODO Auto-generated method stub
+			
 			LoggerFactory.getLogger(CallNotification.class).debug(">>> New call detected from Gateway: " + gateway.getGatewayId() + " : " + callerId);
 		}
 	}
@@ -228,7 +227,6 @@ public class Main {
 	class GatewayStatusHandler implements IGatewayStatusNotification
 	{
 		public void process(AGateway gateway, GatewayStatuses oldStatus, GatewayStatuses newStatus) {
-			// TODO Auto-generated method stub
 			LoggerFactory.getLogger(GatewayStatusHandler.class).debug(">>> Gateway Status change for " + gateway.getGatewayId() + ", OLD: " + oldStatus + " -> NEW: " + newStatus);
 		}
 	}
@@ -314,7 +312,6 @@ public class Main {
 					String smsJson = mapper.writeValueAsString(new CdcMsg<Inbox>("SMSINB", msg));
 					UdpPacketUtil.sendPacket(config.getUdpHost(), config.getUdpPort(), config.getUdpTimeOut(), smsJson);
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					LoggerFactory.getLogger(SmsHandler.class).error("Send JSON via UDP error.", e);
 				}
             }
@@ -394,7 +391,6 @@ public class Main {
 	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Main app = new Main();
 		try
 		{

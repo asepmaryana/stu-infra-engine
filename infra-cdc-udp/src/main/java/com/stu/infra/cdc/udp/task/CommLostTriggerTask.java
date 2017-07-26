@@ -1,4 +1,4 @@
-package com.stu.infra.cdc.udp;
+package com.stu.infra.cdc.udp.task;
 
 import java.util.List;
 
@@ -37,6 +37,7 @@ public class CommLostTriggerTask implements Runnable {
 			{
 				LoggerFactory.getLogger(CommLostTriggerTask.class).info(node.getName() + " was comm lost.");
 				node.setOprStatus(new OprStatus(AppConstant.COMMLOST_STATUS));
+				node.setUpdatedAt(node.getUpdatedAt());
 				nodeService.updateNode(node);
 			}
 		}

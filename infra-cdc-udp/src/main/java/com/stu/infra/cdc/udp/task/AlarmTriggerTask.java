@@ -5,26 +5,27 @@ import java.util.List;
 import org.joda.time.LocalDateTime;
 import org.slf4j.LoggerFactory;
 
+import com.stu.infra.cdc.model.Config;
 import com.stu.infra.cdc.model.Node;
+import com.stu.infra.cdc.service.ConfigService;
 import com.stu.infra.cdc.service.NodeService;
 
 public class AlarmTriggerTask implements Runnable {
 	
+	private ConfigService configService;
     private NodeService nodeService;
     
-    private int maxNode;
-    
-    public AlarmTriggerTask(NodeService nodeService, int maxNode) {
+    public AlarmTriggerTask(ConfigService configService, NodeService nodeService) {
+    	this.configService = configService;
         this.nodeService = nodeService;
-        this.maxNode = maxNode;
     }
     
 	@Override
 	public void run() {
-		
+		Config config = configService.getConfig();
 		LocalDateTime now = new LocalDateTime();
-		List<Node> nodes = nodeService.findFailed(now, maxNode);
-		if(nodes == null || nodes.size() == 0) LoggerFactory.getLogger(AlarmTriggerTask.class).info("------------- NO GENSET FAILED ---------------");
+		List<Node> nodes = nodeService.findFailed(now, config.getNodeLimit());
+		if(nodes == null || nodes.size() == 0) LoggerFactory.getLogger(AlarmTriggerTask.class).debug("------------- NO GENSET FAILED ---------------");
 		else
 		{
 			for(Node node : nodes)

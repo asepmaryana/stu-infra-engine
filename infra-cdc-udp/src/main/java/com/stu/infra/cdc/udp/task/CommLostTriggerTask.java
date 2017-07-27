@@ -9,24 +9,26 @@ import com.stu.infra.cdc.dao.AppConstant;
 import com.stu.infra.cdc.model.Config;
 import com.stu.infra.cdc.model.Node;
 import com.stu.infra.cdc.model.OprStatus;
+import com.stu.infra.cdc.service.ConfigService;
 import com.stu.infra.cdc.service.NodeService;
 
 public class CommLostTriggerTask implements Runnable {
 	
+	private ConfigService configService;
 	private NodeService nodeService;
-	private Config config;
 	
-	public CommLostTriggerTask(NodeService nodeService, Config config) {
+	public CommLostTriggerTask(ConfigService configService, NodeService nodeService) {
+		this.configService = configService;
 		this.nodeService = nodeService;
-		this.config = config;
 	}
 	
 	@Override
 	public void run() {
+		Config config = configService.getConfig();
 		LocalDateTime now = new LocalDateTime();
 		now = now.minusHours(config.getCommLostTime().intValue());
 		List<Node> nodes = nodeService.findComLost(now);
-		LoggerFactory.getLogger(CommLostTriggerTask.class).info("find comm lost where status = 1 and updatedAt < "+now + " --> " + nodes.size());
+		LoggerFactory.getLogger(CommLostTriggerTask.class).debug("find comm lost where status = 1 and updatedAt < "+now + " --> " + nodes.size());
 		if(nodes.isEmpty() || nodes == null) 
 			LoggerFactory.getLogger(CommLostTriggerTask.class).debug("COMM LOST is empty.");
 		else

@@ -58,9 +58,9 @@ public class Main {
 		scheduler 	= SpringManager.getInstance().getBean(ThreadPoolTaskScheduler.class);
 		
 		CronTrigger cron = new CronTrigger(config.getCronScheduler());
-		scheduler.schedule(new AlarmTriggerTask(nodeService, config.getNodeLimit()), cron);
-		scheduler.scheduleAtFixedRate(new CommLostTriggerTask(nodeService, config), new Date(), 60000);
-		scheduler.scheduleAtFixedRate(new ShiftNotificationTask(operatorService, outboxService, config), new Date(), 60000);
+		scheduler.schedule(new AlarmTriggerTask(confService, nodeService), cron);
+		scheduler.scheduleAtFixedRate(new CommLostTriggerTask(confService, nodeService), new Date(), 60000);
+		scheduler.scheduleAtFixedRate(new ShiftNotificationTask(confService, operatorService, outboxService), new Date(), 60000);
 		
 		server = new ThreadPooledServer(config.getServerPort());
 		new Thread(server).start();

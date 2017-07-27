@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -18,18 +20,24 @@ import com.stu.infra.cdc.config.UdpServerConfig;
 import com.stu.infra.cdc.dao.AppConstant;
 import com.stu.infra.cdc.model.AlarmList;
 import com.stu.infra.cdc.model.CdcMsg;
+import com.stu.infra.cdc.model.Config;
 import com.stu.infra.cdc.model.Datalog;
 import com.stu.infra.cdc.model.Inbox;
 import com.stu.infra.cdc.model.Node;
+import com.stu.infra.cdc.model.Operator;
 import com.stu.infra.cdc.model.OprStatus;
 import com.stu.infra.cdc.model.Outbox;
 import com.stu.infra.cdc.service.AlarmListService;
+import com.stu.infra.cdc.service.ConfigService;
 import com.stu.infra.cdc.service.DatalogService;
 import com.stu.infra.cdc.service.InboxService;
 import com.stu.infra.cdc.service.NodeService;
+import com.stu.infra.cdc.service.OperatorService;
 import com.stu.infra.cdc.service.OutboxService;
 
 public class SmsUdpResponder implements Runnable, AppConstant {
+	
+	private ConfigService configService;
 	
 	private NodeService nodeService;
 	
@@ -39,6 +47,8 @@ public class SmsUdpResponder implements Runnable, AppConstant {
 	
 	private OutboxService outboxService;
 	
+	private OperatorService operatorService;
+	
 	private AlarmListService alarmListService;
 	
 	private byte[] sendData = new byte[1024];
@@ -47,15 +57,18 @@ public class SmsUdpResponder implements Runnable, AppConstant {
 	
 	private DatagramPacket receivePacket;
 	
+	private Config config;
+	
 	public SmsUdpResponder(DatagramSocket socket, DatagramPacket packet) {
 		this.socket = socket;
 		this.receivePacket = packet;
+		this.configService = SpringManager.getInstance().getBean(ConfigService.class);
 		this.nodeService = SpringManager.getInstance().getBean(NodeService.class);
 		this.datalogService = SpringManager.getInstance().getBean(DatalogService.class);
 		this.inboxService = SpringManager.getInstance().getBean(InboxService.class);
 		this.outboxService = SpringManager.getInstance().getBean(OutboxService.class);
 		this.alarmListService = SpringManager.getInstance().getBean(AlarmListService.class);
-		
+		this.operatorService = SpringManager.getInstance().getBean(OperatorService.class);
 	}
 
 	public byte[] getSendData() {
@@ -83,6 +96,7 @@ public class SmsUdpResponder implements Runnable, AppConstant {
 	}
 
 	public void run() {
+		config = configService.getConfig();
 		
 		String smsJson = new String(receivePacket.getData());
 		
@@ -185,11 +199,13 @@ public class SmsUdpResponder implements Runnable, AppConstant {
             			}
             			// genset on fail
             			else if(key.toUpperCase().equals("10")) {
+            				if(val.equals("1") && node.getGensetOnFail() == 0) createNotifSms(GENSET_ON_FAIL, node, updated);
             				node.setGensetOnFail(new Short(val));
             				data.setGensetOnFail(node.getGensetOnFail());
             			}
             			// genset off fail
             			else if(key.toUpperCase().equals("11")) {
+            				if(val.equals("1") && node.getGensetOffFail() == 0) createNotifSms(GENSET_OFF_FAIL, node, updated);
             				node.setGensetOffFail(new Short(val));
             				data.setGensetOffFail(node.getGensetOffFail());
             			}
@@ -307,8 +323,43 @@ public class SmsUdpResponder implements Runnable, AppConstant {
 		}
 	}
 	
-	private void createNotifSms(int alarmId, Node node)
+	private void createNotifSms(int alarmListId, Node node, Date date)
 	{
+		AlarmList alarm = alarmListService.findById(alarmListId);
 		
+		if(alarm != null) {
+			// read shift time
+			LocalDateTime local = new LocalDateTime(date.getTime());			
+			int hour	= new Integer(config.getShiftTime().substring(0, 2)).intValue();
+			if(local.getHourOfDay() < hour) local = local.minusDays(1);
+			
+			DateFormat df = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+			StringBuilder sb = new StringBuilder();
+			sb.append("CDC NOTIFICATION SYSTEM\n");
+			sb.append("-------------------\n\n");
+			sb.append(alarm.getName().toUpperCase()).append("\n");
+			sb.append(node.getName()).append("\n");
+			sb.append(df.format(date));
+			String msg = sb.toString();
+			
+			// get name of day
+			List<Operator> operators	= operatorService.findByDay(local.getDayOfWeek());
+			for(Operator op : operators)
+			{
+				Outbox sms = new Outbox();
+				sms.setRecipient(op.getPhone());
+				sms.setText(msg);
+				sms.setCreateDate(new LocalDateTime());
+				sms.setSentDate(null);
+				sms.setReplyDate(null);
+				sms.setReplyText(null);
+				sms.setRequestId(null);
+				sms.setStatus('U');
+				sms.setGatewayId("*");
+				sms.setMessageType('N');
+				
+				outboxService.save(sms);
+			}
+		}
 	}
 }

@@ -1,6 +1,7 @@
 package com.stu.infra.cdc.sms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -45,8 +46,10 @@ public class Main {
 	CallNotification callNotification;
 	QueueSendingNotification queueSendingNotification;
 	InboundPollingThread inboundPollingThread;
-	OutboundPollingThread outboundPollingThread;	
+	OutboundPollingThread outboundPollingThread;
+	//InboxSenderThread inboxSenderThread;
 	List<Modem> modems;
+	List<String> responses	= Arrays.asList("NODE_UPDATED", "DATALOG_SAVED", "NODE_UPDATED", "INVALID_SMS", "UNREGISTER");
 	
 	// configuration
 	SmsGwConfig config;
@@ -59,7 +62,7 @@ public class Main {
 		@Override
         public void run()
         {
-			LoggerFactory.getLogger(Shutdown.class).info("Shutting down SMS Server..");
+			LoggerFactory.getLogger(Shutdown.class).info("Shutting down SMS Server...");
 			Main.this.shutdown = true;
 			try
 			{
@@ -71,13 +74,11 @@ public class Main {
 					Main.this.inboundPollingThread.interrupt();
 					Main.this.inboundPollingThread.join();
 				}
-				
 				if (Main.this.outboundPollingThread != null)
 				{
 					Main.this.outboundPollingThread.interrupt();
 					Main.this.outboundPollingThread.join();
-				}
-				
+				}				
 				SpringManager.getInstance().getApplicationContext().close();
 			}
 			catch (Exception e)
@@ -86,94 +87,6 @@ public class Main {
 			}
 			LoggerFactory.getLogger(Shutdown.class).info("SMS Server stopped.");
         }
-	}
-	
-	void readMessages()
-	{
-		List<InboundMessage> msgList = new ArrayList<InboundMessage>();
-		try {
-			Service.getInstance().readMessages(msgList, MessageClasses.ALL);
-			LoggerFactory.getLogger(Main.class).info(msgList.size()+ " messages to be processed.");
-            if (msgList.size() > 0)
-            {
-                for(InboundMessage msg : msgList)
-                {
-                	LoggerFactory.getLogger(Main.class).info("SMS RECEIVED ON " + msg.getGatewayId() + ":\n" +
-                    msg.getOriginator() + "\n"+
-                    msg.getText() + "\n" +
-                    "-----------------------------------------------\n");
-                	
-                	Inbox sms = SmsUtil.translate(msg);
-    				inboxService.save(sms);
-    				
-        			//process
-    				(new SmsHandler(sms)).start();
-    				Service.getInstance().deleteMessage(msg);
-                    //if(config.isSmsDeleted()) Service.getInstance().deleteMessage(msg);
-                }
-            }
-        }
-        catch (Exception e)
-        {
-        	LoggerFactory.getLogger(Main.class).debug("SMSServer: reading messages exception! ", e);
-        }
-	}
-	
-	void sendMessages()
-	{
-		boolean foundOutboundGateway = false;
-		for (org.smslib.AGateway gtw : Service.getInstance().getGateways())
-		{
-			if (gtw.isOutbound())
-			{
-				foundOutboundGateway = true;
-				break;
-			}
-		}
-		if (foundOutboundGateway)
-		{
-			List<Outbox> lists = null;
-			ObjectMapper mapper = new ObjectMapper();
-			mapper.registerModule(new JodaModule());
-            mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-        	try {
-				String request = mapper.writeValueAsString(new CdcMsg<Outbox>("GETOUT", null));
-				String smsJson = UdpPacketUtil.sendPacket(config.getUdpHost(), config.getUdpPort(), config.getUdpTimeOut(), request);
-				
-				lists = mapper.readValue(smsJson, new TypeReference<List<Outbox>>(){});
-			} catch (Exception e) {
-				LoggerFactory.getLogger(SmsHandler.class).error("Read SMS Outbox from UDP server error : " + e.getMessage());
-			}
-        	
-        	if(lists != null)
-        	{
-        		if (config.getSendMode().equalsIgnoreCase(("sync"))) 
-    			{
-    				for(Outbox list : lists)
-    				{
-    					OutboundMessage msg = new OutboundMessage();
-    					msg.setDate(new Date());
-    					msg.setRecipient(list.getRecipient());
-    					msg.setText(list.getText());
-    					msg.setStatusReport(true);
-    					try
-    					{
-    						Service.getInstance().sendMessage(msg);
-    						list.setStatus('S');
-    						list.setSentDate(new LocalDateTime(System.currentTimeMillis()));
-    						
-    						String request = mapper.writeValueAsString(new CdcMsg<Outbox>("SETOUT", list));
-    						String respons = UdpPacketUtil.sendPacket(config.getUdpHost(), config.getUdpPort(), config.getUdpTimeOut(), request);    						
-    					}
-    					catch (Exception e)
-    					{
-    						LoggerFactory.getLogger(Main.class).error("Sending messages exception !", e, null);
-    					}
-    				}
-    			}
-        	}
-        	else LoggerFactory.getLogger(Main.class).info("list of SMS outbox is null.");
-		}
 	}
 	
 	class InboundNotification implements IInboundMessageNotification
@@ -191,10 +104,10 @@ public class Main {
 	                    "-----------------------------------------------\n");
 				
 				Inbox sms = SmsUtil.translate(msg);
-				inboxService.save(sms);
-				
+				Long smsId= inboxService.save(sms);
+				sms.setId(smsId);
 				//process
-				(new SmsHandler(sms)).start();				
+				(new SmsHandler(sms)).start();
 			}
 			
 			try { if(Main.this.config.isSmsDeleted()) Service.getInstance().deleteMessage(msg); }
@@ -267,7 +180,7 @@ public class Main {
 				try { Thread.sleep(Main.this.config.getOutboundInterval() * 1000);} catch (Exception e) {}
 			}
         }
-	}
+	}	
 	
 	class SmsHandler extends Thread
 	{
@@ -278,44 +191,140 @@ public class Main {
 			this.msg = msg;
 		}
 		
-		@Override
-        public void run()
+		public void run()
         {
-			String smsMessage = msg.getText().trim();
-            String sender = msg.getSender();
-            if(sender.startsWith("62")) sender = "0" + sender.substring(2, sender.length());
-            
-            if(config.getSmsProtocolGw().equalsIgnoreCase("http")) {
-            	String postUrl = config.getHttpUrl();
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("sender", sender);
-                params.put("message_date", SmsUtil.formatDate(msg.getMessageDate().toDate()));
-                params.put("receive_date", SmsUtil.formatDate(msg.getReceiveDate().toDate()));            
-                params.put("text", smsMessage);
-                params.put("gateway_id", msg.getGatewayId());
-                
-                String resp = "";
-                try { 
-                	resp = HttpClientUtil.post(postUrl, params, null);
-                	//if(!resp.toUpperCase().equals("OK")) smsDao.saveInbox(msg, null, null);
+			try
+			{
+				String smsMessage = msg.getText().trim();
+	            String sender = msg.getSender();
+	            if(sender.startsWith("62")) sender = "0" + sender.substring(2, sender.length());
+	            
+	            if(config.getSmsProtocolGw().equalsIgnoreCase("http")) {
+	            	String postUrl = config.getHttpUrl();
+	                Map<String, String> params = new HashMap<String, String>();
+	                params.put("sender", sender);
+	                params.put("message_date", SmsUtil.formatDate(msg.getMessageDate().toDate()));
+	                params.put("receive_date", SmsUtil.formatDate(msg.getReceiveDate().toDate()));            
+	                params.put("text", smsMessage);
+	                params.put("gateway_id", msg.getGatewayId());
+	                
+	                String resp = "";
+	                try { 
+	                	resp = HttpClientUtil.post(postUrl, params, null);
+	                }
+	                catch (Exception e) { 
+	                	resp = e.getMessage();
+	                }
+	                LoggerFactory.getLogger(SmsHandler.class).info("Request "+postUrl+" --> "+resp);
+	            }
+	            else if(config.getSmsProtocolGw().equalsIgnoreCase("udp")) {
+	            	ObjectMapper mapper = new ObjectMapper();
+	            	mapper.registerModule(new JodaModule());
+	                mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+	            	try {
+						String smsJson = mapper.writeValueAsString(new CdcMsg<Inbox>("SMSINB", msg));
+						String respone = UdpPacketUtil.sendPacket(config.getUdpHost(), config.getUdpPort(), config.getUdpTimeOut(), smsJson);
+						if(responses.contains(respone)) {
+							msg.setStatus('S');
+							inboxService.update(msg);
+						}
+					} catch (Exception e) {
+						LoggerFactory.getLogger(SmsHandler.class).error("Send JSON via UDP error.", e);
+					}
+	            }
+			}
+			catch (Exception e)
+			{
+				LoggerFactory.getLogger(SmsHandler.class).error("SmsHandler error.", e);
+			}
+        }
+	}
+	
+	void readMessages()
+	{
+		List<InboundMessage> msgList = new ArrayList<InboundMessage>();
+		try {
+			Service.getInstance().readMessages(msgList, MessageClasses.ALL);
+			LoggerFactory.getLogger(Main.class).info(msgList.size()+ " messages to be processed.");
+            if (msgList.size() > 0)
+            {
+                for(InboundMessage msg : msgList)
+                {
+                	LoggerFactory.getLogger(Main.class).info("SMS RECEIVED ON " + msg.getGatewayId() + ":\n" +
+                    msg.getOriginator() + "\n"+
+                    msg.getText() + "\n" +
+                    "-----------------------------------------------\n");
+                	
+                	Inbox sms = SmsUtil.translate(msg);
+    				inboxService.save(sms);
+    				
+        			//process
+    				(new SmsHandler(sms)).start();
+    				Service.getInstance().deleteMessage(msg);
+                    //if(config.isSmsDeleted()) Service.getInstance().deleteMessage(msg);
                 }
-                catch (Exception e) { 
-                	resp = e.getMessage();
-                }
-                LoggerFactory.getLogger(SmsHandler.class).info("Request "+postUrl+" --> "+resp);
-            }
-            else if(config.getSmsProtocolGw().equalsIgnoreCase("udp")) {
-            	ObjectMapper mapper = new ObjectMapper();
-            	mapper.registerModule(new JodaModule());
-                mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-            	try {
-					String smsJson = mapper.writeValueAsString(new CdcMsg<Inbox>("SMSINB", msg));
-					UdpPacketUtil.sendPacket(config.getUdpHost(), config.getUdpPort(), config.getUdpTimeOut(), smsJson);
-				} catch (Exception e) {
-					LoggerFactory.getLogger(SmsHandler.class).error("Send JSON via UDP error.", e);
-				}
             }
         }
+        catch (Exception e)
+        {
+        	LoggerFactory.getLogger(Main.class).debug("SMSServer: reading messages exception! ", e);
+        }
+	}
+	
+	void sendMessages()
+	{
+		boolean foundOutboundGateway = false;
+		for (org.smslib.AGateway gtw : Service.getInstance().getGateways())
+		{
+			if (gtw.isOutbound())
+			{
+				foundOutboundGateway = true;
+				break;
+			}
+		}
+		if (foundOutboundGateway)
+		{
+			List<Outbox> lists = null;
+			ObjectMapper mapper = new ObjectMapper();
+			mapper.registerModule(new JodaModule());
+            mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        	try {
+				String request = mapper.writeValueAsString(new CdcMsg<Outbox>("GETOUT", null));
+				String smsJson = UdpPacketUtil.sendPacket(config.getUdpHost(), config.getUdpPort(), config.getUdpTimeOut(), request);
+				lists = mapper.readValue(smsJson, new TypeReference<List<Outbox>>(){});
+			} catch (Exception e) {
+				LoggerFactory.getLogger(Main.class).error("Read SMS Outbox from UDP server error : " + e.getMessage());
+			}
+        	
+        	if(lists != null)
+        	{
+        		if (config.getSendMode().equalsIgnoreCase(("sync"))) 
+    			{
+    				for(Outbox list : lists)
+    				{
+    					OutboundMessage msg = new OutboundMessage();
+    					msg.setDate(new Date());
+    					msg.setRecipient(list.getRecipient());
+    					msg.setText(list.getText());
+    					msg.setStatusReport(true);
+    					try
+    					{
+    						Service.getInstance().sendMessage(msg);
+    						list.setStatus('S');
+    						list.setSentDate(new LocalDateTime(System.currentTimeMillis()));
+    						
+    						String request = mapper.writeValueAsString(new CdcMsg<Outbox>("SETOUT", list));
+    						String respons = UdpPacketUtil.sendPacket(config.getUdpHost(), config.getUdpPort(), config.getUdpTimeOut(), request);    						
+    					}
+    					catch (Exception e)
+    					{
+    						LoggerFactory.getLogger(Main.class).error("Sending sms exception !", e, null);
+    					}
+    				}
+    			}
+        	}
+        	else LoggerFactory.getLogger(Main.class).info("list of SMS outbox is empty.");
+		}
 	}
 	
 	public Main()
@@ -327,7 +336,7 @@ public class Main {
 		this.callNotification 		= new CallNotification();
 		this.queueSendingNotification = new QueueSendingNotification();
 		this.inboundPollingThread 	= null;
-		this.outboundPollingThread 	= null;		
+		this.outboundPollingThread 	= null;
 	}
 	
 	private void run() throws Exception {
@@ -368,13 +377,11 @@ public class Main {
 				this.inboundPollingThread.interrupt();
 				this.inboundPollingThread.join();
 			}
-			
 			if (this.outboundPollingThread != null)
 			{
 				this.outboundPollingThread.interrupt();
 				this.outboundPollingThread.join();
 			}
-			
 		}
 	}
 	

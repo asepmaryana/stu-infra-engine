@@ -125,7 +125,8 @@ public class SmsUdpResponder implements Runnable, AppConstant {
             LoggerFactory.getLogger(SmsUdpResponder.class).debug("JSON to Java OK --> " + msg.getSender());
             
             Node node = nodeService.findByPhone(sender);
-            response  = "Unregister phone " + sender;
+            //response  = "Unregister phone " + sender;
+            response  = "UNREGISTER";
             
             if(node == null) LoggerFactory.getLogger(SmsUdpResponder.class).warn(response);
             else 
@@ -250,26 +251,26 @@ public class SmsUdpResponder implements Runnable, AppConstant {
             				if(updated.getTime() > node.getUpdatedAt().toDate().getTime()) {
                 				node.setUpdatedAt(new LocalDateTime(updated.getTime()));
                 				nodeService.updateNode(node);
-                				response = "NODE UPDATED";
+                				response = "NODE_UPDATED";
                 			}
                 			else {
                 				data.setdTime(new LocalDateTime(updated.getTime()));
                 				datalogService.saveDatalog(data);
-                				response = "DATALOG SAVED";
+                				response = "DATALOG_SAVED";
                 			}
             			}
             			else
             			{
             				node.setUpdatedAt(new LocalDateTime(updated.getTime()));
             				nodeService.updateNode(node);
-            				response = "NODE UPDATED";
+            				response = "NODE_UPDATED";
             			}
             			//msg.setMessageDate(new LocalDateTime(updated.getTime()));
             			inboxService.save(msg);
             		}
             	}
             	else {
-            		response = "INVALID SMS";
+            		response = "INVALID_SMS";
             		LoggerFactory.getLogger(SmsUdpResponder.class).info(response);
             	}
             }

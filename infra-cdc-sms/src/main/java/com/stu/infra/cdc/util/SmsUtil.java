@@ -67,7 +67,7 @@ public class SmsUtil {
     
     public static Inbox translate(InboundMessage msg)
     {
-    	Inbox sms = new Inbox();
+    	Inbox sms = new Inbox();    	
     	String sender = msg.getOriginator();
         if(sender.startsWith("62")) sender = "0" + sender.substring(2, sender.length());
     	sms.setOriginator(sender);
@@ -85,6 +85,7 @@ public class SmsUtil {
 		sms.setMessageDate(new LocalDateTime(msg.getDate().getTime()));
 		sms.setReceiveDate(new LocalDateTime(System.currentTimeMillis()));				
 		sms.setGatewayId(msg.getGatewayId());
+		sms.setStatus('U');
     	return sms;
     }
 }

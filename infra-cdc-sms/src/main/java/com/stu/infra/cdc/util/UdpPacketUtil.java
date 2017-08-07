@@ -22,13 +22,13 @@ public static String sendPacket(String host, int port, int timeOut, String messa
 		
 		DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
 		clientSocket.send(sendPacket);
-		LoggerFactory.getLogger(UdpPacketUtil.class).info("SEND TO SERVER : "+message);
+		LoggerFactory.getLogger(UdpPacketUtil.class).info("SEND: "+message);
 		
 		DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
 		clientSocket.receive(receivePacket);
 		
 		String response = new String(receivePacket.getData());
-		LoggerFactory.getLogger(UdpPacketUtil.class).info("RECV FROM SERVER : " + response);
+		LoggerFactory.getLogger(UdpPacketUtil.class).info("RESP: " + response);
 		clientSocket.close();
 		
 		return response;

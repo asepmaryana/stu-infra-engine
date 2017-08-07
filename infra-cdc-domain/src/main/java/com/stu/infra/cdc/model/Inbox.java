@@ -55,6 +55,9 @@ public class Inbox  implements java.io.Serializable {
 	@Column(name = "encoding")
 	private char encoding;
 	
+	@Column(name = "status")
+	private char status;
+	
 	public Inbox() {}
 
 	public Long getId() {
@@ -132,6 +135,14 @@ public class Inbox  implements java.io.Serializable {
 
 	public void setSender(String sender) {
 		this.sender = sender;
+	}
+
+	public char getStatus() {
+		return status;
+	}
+
+	public void setStatus(char status) {
+		this.status = status;
 	}
 
 }

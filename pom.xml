@@ -82,5 +82,7 @@
   	<module>infra-cdc-service</module>
   	<module>infra-cdc-web</module>  	
   	<module>infra-cdc-udp</module>
+  	<module>infra-cdc-test</module>
   </modules>
+  
 </project>

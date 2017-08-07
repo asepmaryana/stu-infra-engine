@@ -1,3 +1,4 @@
+infra-cdc-test
 **/lib
 **/target
 **/logs
@@ -9,3 +10,4 @@
 /Servers/
 .metadata
 *.log
+.gitignore
